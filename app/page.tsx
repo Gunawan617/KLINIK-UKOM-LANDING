@@ -4,17 +4,17 @@ import Courses from './components/Courses/index';
 import Mentor from './components/Mentor/index';
 import Testimonials from './components/Testimonials/index';
 import Newsletter from './components/Newsletter/Newsletter';
-
+import WhatAppFloating from './components/FloatingWhatsApp/FloatingWhatsApp';  
 
 export default function Home() {
   return (
     <main>
       <Banner />
-      <Companies />
+      {/* <Companies /> */}
       <Courses />
       <Mentor />
       <Testimonials />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </main>
   )
 }

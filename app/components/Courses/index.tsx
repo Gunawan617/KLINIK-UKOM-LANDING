@@ -11,6 +11,7 @@ interface DataType {
     heading: string;
     heading2: string;
     imgSrc: string;
+    videoUrl?: string;
     name: string;
     students: number;
     classes: number;
@@ -24,6 +25,7 @@ const postData: DataType[] = [
         heading2: 'javascript',
         name: "Colt stelle",
         imgSrc: '/assets/courses/courseone.png',
+        videoUrl: "https://www.youtube.com/embed/NWOVGQbsEpg",
         students: 150,
         classes: 12,
         price: 20,
@@ -34,6 +36,7 @@ const postData: DataType[] = [
         heading2: 'with React programme',
         name: "Colt stelle",
         imgSrc: '/assets/courses/coursetwo.png',
+        videoUrl: "https://www.youtube.com/embed/VmBHRObsXQ0",
         students: 130,
         classes: 12,
         price: 20,
@@ -44,6 +47,7 @@ const postData: DataType[] = [
         heading2: 'with Figma',
         name: "Colt stelle",
         imgSrc: '/assets/courses/coursethree.png',
+        videoUrl: "https://www.youtube.com/embed/RHHT-v5mTEw",
         students: 120,
         classes: 12,
         price: 20,
@@ -54,31 +58,32 @@ const postData: DataType[] = [
         heading2: 'Webflow this Week!',
         name: "Colt stelle",
         imgSrc: '/assets/courses/courseone.png',
+        videoUrl: "https://www.youtube.com/embed/u8QsqypGfrs",
         students: 150,
         classes: 12,
         price: 20,
         rating: 4.7,
     },
-    {
-        heading: 'We Launch Delia',
-        heading2: 'Webflow this Week!',
-        name: "Colt stelle",
-        imgSrc: '/assets/courses/coursetwo.png',
-        students: 150,
-        classes: 12,
-        price: 20,
-        rating: 4.7,
-    },
-    {
-        heading: 'We Launch Delia',
-        heading2: 'Webflow this Week!',
-        name: "Colt stelle",
-        imgSrc: '/assets/courses/coursethree.png',
-        students: 150,
-        classes: 12,
-        price: 20,
-        rating: 4.7,
-    },
+    // {
+    //     heading: 'We Launch Delia',
+    //     heading2: 'Webflow this Week!',
+    //     name: "Colt stelle",
+    //     imgSrc: '/assets/courses/coursetwo.png',
+    //     students: 150,
+    //     classes: 12,
+    //     price: 20,
+    //     rating: 4.7,
+    // },
+    // {
+    //     heading: 'We Launch Delia',
+    //     heading2: 'Webflow this Week!',
+    //     name: "Colt stelle",
+    //     imgSrc: '/assets/courses/coursethree.png',
+    //     students: 150,
+    //     classes: 12,
+    //     price: 20,
+    //     rating: 4.7,
+    // },
 ]
 
 // CAROUSEL SETTINGS
@@ -125,8 +130,8 @@ export default class MultipleItems extends Component {
                 <div className='mx-auto max-w-7xl sm:py-8 px-4 lg:px-8 '>
 
                     <div className="sm:flex justify-between items-center">
-                        <h3 className="text-midnightblue text-4xl lg:text-55xl font-semibold mb-5 sm:mb-0">Popular courses.</h3>
-                        <Link href={'/'} className="text-Blueviolet text-lg font-medium space-links">Explore courses&nbsp;&gt;&nbsp;</Link>
+                        <h3 className="text-midnightblue text-4xl lg:text-55xl font-semibold mb-5 sm:mb-0">Pratinjau Pembelajaran</h3>
+                        <Link href={'/'} className="text-Blueviolet text-lg font-medium space-links">Lihat Lebih lanjut&nbsp;&gt;&nbsp;</Link>
                     </div>
 
 
@@ -136,7 +141,22 @@ export default class MultipleItems extends Component {
 
                                 <div className='bg-white m-3 px-3 pt-3 pb-12 my-20 shadow-courses rounded-2xl'>
                                     <div className="relative rounded-3xl">
-                                        <Image src={items.imgSrc} alt="gaby" width={389} height={262} className="m-auto clipPath" />
+                                        {/* <Image src={items.imgSrc} alt="gaby" width={389} height={262} className="m-auto clipPath" /> */}
+                                        {items.videoUrl ? (
+                                        <iframe
+                                            width="389"
+                                            height="262"
+                                            src={items.videoUrl}
+                                            title={items.heading}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className="m-auto rounded-3xl"
+                                        ></iframe>
+                                        ) : (
+                                        <Image src={items.imgSrc} alt={items.heading} width={389} height={262} className="m-auto clipPath" />
+                                        )}
+
                                         <div className="absolute right-5 -bottom-2 bg-ultramarine rounded-full p-6">
                                             <h3 className="text-white uppercase text-center text-sm font-medium">best <br /> seller</h3>
                                         </div>

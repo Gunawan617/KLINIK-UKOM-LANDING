@@ -13,44 +13,45 @@ interface DataType {
     name: string;
 }
 
-const postData: DataType[] = [
+  const postData: DataType[] = 
+    [
     {
-        name: "Robert Fox",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/testimonial/user.svg',
+        name: "dr. Lestari Wulandari, M.Kep",
+        profession: "Pengajar Keperawatan",
+        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Ners. Materi yang diberikan jelas dan mudah dipahami.",
+        imgSrc: "/assets/testimonial/user.svg",
     },
     {
-        name: "Leslie Alexander",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/mentor/user2.png',
+        name: "Siti Rahmawati, S.ST",
+        profession: "Bidan Praktisi & Mentor",
+        comment: "Metode belajar interaktifnya bikin saya lebih percaya diri menghadapi ujian. Sangat direkomendasikan untuk calon bidan!",
+        imgSrc: "/assets/mentor/user2.png",
     },
     {
-        name: "Cody Fisher",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/mentor/user3.png',
+        name: "Ahmad Faizal, S.Kep., Ners",
+        profession: "Alumni Bimbel Ners",
+        comment: "Pengajarnya berpengalaman dan sangat mendukung. Saya lulus UKOM di percobaan pertama berkat bimbel ini.",
+        imgSrc: "/assets/mentor/user3.png",
     },
     {
-        name: "Robert Fox",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/mentor/user1.png',
+        name: "dr. Lestari Wulandari, M.Kep",
+        profession: "Pengajar Keperawatan",
+        comment: "Pendekatan belajarnya sangat cocok untuk mahasiswa yang butuh bimbingan intensif. Top banget!",
+        imgSrc: "/assets/mentor/user1.png",
     },
     {
-        name: "Leslie Alexander",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/mentor/user2.png',
+        name: "Siti Rahmawati, S.ST",
+        profession: "Bidan Praktisi & Mentor",
+        comment: "Sistem soal dan pembahasannya sangat lengkap. Cocok untuk yang mau lulus UKOM dengan nilai tinggi.",
+        imgSrc: "/assets/mentor/user2.png",
     },
     {
-        name: "Cody Fisher",
-        profession: 'CEO, Parkview Int.Ltd',
-        comment: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
-        imgSrc: '/assets/mentor/user3.png',
+        name: "Ahmad Faizal, S.Kep., Ners",
+        profession: "Alumni Bimbel Ners",
+        comment: "Belajarnya fleksibel tapi tetap terstruktur. Cocok banget buat yang sambil kerja atau koas.",
+        imgSrc: "/assets/mentor/user3.png",
     },
-]
+    ]
 
 // CAROUSEL SETTINGS
 
