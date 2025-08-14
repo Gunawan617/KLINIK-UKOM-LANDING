@@ -15,55 +15,55 @@ interface DataType {
     name: string;
     students: number;
     classes: number;
-    price: number;
+    // price: number;
     rating: number;
 }
 
 const postData: DataType[] = [
     {
-        heading: 'Full stack modern',
-        heading2: 'javascript',
-        name: "Colt stelle",
+        heading: 'Pembahasan Soal',
+        heading2: 'Perawat',
+        name: "Dr. Neny Triana, S.Kep., Ns., M.Pd., M.Kep.",
         imgSrc: '/assets/courses/courseone.png',
         videoUrl: "https://www.youtube.com/embed/NWOVGQbsEpg",
         students: 150,
         classes: 12,
-        price: 20,
+        // price: 20,
         rating: 4.7,
     },
     {
-        heading: 'Design system',
-        heading2: 'with React programme',
-        name: "Colt stelle",
+        heading: 'Pembahasan Soal',
+        heading2: 'Perawat bersama',
+        name: "Ria Anugrahwati, Ners., M.Kep.",
         imgSrc: '/assets/courses/coursetwo.png',
         videoUrl: "https://www.youtube.com/embed/VmBHRObsXQ0",
         students: 130,
         classes: 12,
-        price: 20,
+        // price: 20,
         rating: 4.7,
     },
     {
-        heading: 'Design banner',
-        heading2: 'with Figma',
-        name: "Colt stelle",
+        heading: 'Pembahasan Soal UKOM' ,
+        heading2: 'D3 Lab Medis',
+        name: "Sabrina P. M. Pinontoan, S.Pd., M.Si.",
         imgSrc: '/assets/courses/coursethree.png',
         videoUrl: "https://www.youtube.com/embed/RHHT-v5mTEw",
         students: 120,
         classes: 12,
-        price: 20,
+        // price: 20,
         rating: 4.7,
     },
-    {
-        heading: 'We Launch Delia',
-        heading2: 'Webflow this Week!',
-        name: "Colt stelle",
-        imgSrc: '/assets/courses/courseone.png',
-        videoUrl: "https://www.youtube.com/embed/u8QsqypGfrs",
-        students: 150,
-        classes: 12,
-        price: 20,
-        rating: 4.7,
-    },
+    // {
+    //     heading: 'We Launch Delia',
+    //     heading2: 'Webflow this Week!',
+    //     name: "Colt stelle",
+    //     imgSrc: '/assets/courses/courseone.png',
+    //     videoUrl: "https://www.youtube.com/embed/u8QsqypGfrs",
+    //     students: 150,
+    //     classes: 12,
+    //     // price: 20,
+    //     rating: 4.7,
+    // },
     // {
     //     heading: 'We Launch Delia',
     //     heading2: 'Webflow this Week!',
@@ -181,9 +181,9 @@ export default class MultipleItems extends Component {
                                                     <StarIcon className="h-5 w-5 text-gold" />
                                                 </div>
                                             </div>
-                                            <div>
+                                            {/* <div>
                                                 <h3 className="text-3xl font-medium">${items.price}</h3>
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <hr style={{ color: "#C4C4C4" }} />

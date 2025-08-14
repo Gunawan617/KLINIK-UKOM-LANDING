@@ -21,7 +21,7 @@ const socialLinks: socialLinks[] = [
     },
     {
         imgSrc: '/assets/footer/insta.svg',
-        link: 'www.instagram.com',
+        link: 'https://www.instagram.com/klinikukom?igsh=YzljYTk1ODg3Zg==',
         width: 14
     },
     {

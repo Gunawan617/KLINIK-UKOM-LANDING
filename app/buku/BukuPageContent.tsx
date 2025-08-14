@@ -1,10 +1,19 @@
 "use client"
 import React, { useState } from 'react';
 
-export default function BukuPage() {
-  const [activeTab, setActiveTab] = useState('services');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+const Icon = ({ name, className = "w-5 h-5" }: { name: string; className?: string }) => {
+  const icons = {
+    search: "🔍", filter: "⚙", book: "📖", edit: "✏", award: "🏆", 
+    users: "👥", clock: "⏰", check: "✅", star: "⭐", calendar: "📅", 
+    user: "👤", message: "💬", heart: "❤", share: "📤", right: "→", phone: "📞"
+  };
+  return <span className={`${className} inline-flex items-center justify-center`}>{icons[name as keyof typeof icons] || "📄"}</span>;
+};
+
+const BukuPageContent = () => {
+  const [activeTab, setActiveTab] = useState<string>('services');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const publishingServices = [
     {
@@ -113,48 +122,58 @@ export default function BukuPage() {
     return matchesSearch && matchesCategory;
   });
 
-  const handleConsultation = (serviceTitle:string) => {
+  const handleConsultation = (serviceTitle: string) => {
+    // Create WhatsApp message
     const message = `Halo UKOM Academy! Saya tertarik dengan paket "${serviceTitle}". Mohon informasi lebih lanjut mengenai layanan penerbitan buku ini. Terima kasih!`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = "6281234567890";
+    const whatsappNumber = "6281234567890"; // Replace with actual WhatsApp number
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
   };
 
-  const handleCardClick = (serviceTitle:string) => {
+  const handleCardClick = (serviceTitle: string) => {
     handleConsultation(serviceTitle);
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navigation Tabs */}
       <div className="bg-white shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8">
             <button
               type="button"
-              onClick={() => setActiveTab('services')}
-              className={`py-5 px-4 border-b-3 font-semibold text-sm transition-all duration-200 ${
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveTab('services');
+              }}
+              className={`py-5 px-4 border-b-3 font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                 activeTab === 'services'
-                  ? 'border-blue-500 text-blue-600 bg-blue-50'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
+                  ? 'border-blue-500 text-blue-600 bg-blue-50 bg-opacity-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
               <div className="flex items-center gap-2">
-                <span>✏️</span>
+                <Icon name="edit" className="w-5 h-5" />
                 <span>Layanan Penerbitan</span>
               </div>
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab('showcase')}
-              className={`py-5 px-4 border-b-3 font-semibold text-sm transition-all duration-200 ${
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveTab('showcase');
+              }}
+              className={`py-5 px-4 border-b-3 font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                 activeTab === 'showcase'
-                  ? 'border-blue-500 text-blue-600 bg-blue-50'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
+                  ? 'border-blue-500 text-blue-600 bg-blue-50 bg-opacity-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
               <div className="flex items-center gap-2">
-                <span>📖</span>
+                <Icon name="book" className="w-5 h-5" />
                 <span>Showcase Buku Terbitan</span>
               </div>
             </button>
@@ -165,6 +184,7 @@ export default function BukuPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {activeTab === 'services' && (
           <div>
+            {/* Services Hero */}
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Wujudkan Impian Menerbitkan Buku Kesehatan Anda
@@ -174,6 +194,7 @@ export default function BukuPage() {
               </p>
             </div>
 
+            {/* Services Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
               {publishingServices.map((service) => (
                 <div 
@@ -184,7 +205,7 @@ export default function BukuPage() {
                   {service.popular && (
                     <div className="absolute top-6 right-6 z-20">
                       <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1 shadow-lg animate-pulse">
-                        <span>🏆</span>
+                        <Icon name="award" className="w-4 h-4" />
                         TERPOPULER
                       </span>
                     </div>
@@ -194,7 +215,7 @@ export default function BukuPage() {
                     <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center text-white">
-                        <div className="text-6xl mb-4">📖</div>
+                        <Icon name="book" className="w-20 h-20 mx-auto mb-4 opacity-90" />
                         <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
                         <p className="text-blue-100 text-sm px-4">Profesional & Berkualitas</p>
                       </div>
@@ -208,13 +229,13 @@ export default function BukuPage() {
 
                     <div className="mb-8">
                       <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2 text-lg">
-                        <span>✅</span>
+                        <Icon name="check" className="w-5 h-5 text-green-500" />
                         Fitur yang Termasuk:
                       </h4>
                       <ul className="space-y-3">
                         {service.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-3 text-gray-600 text-sm">
-                            <span className="text-green-500 mt-1">✅</span>
+                            <Icon name="check" className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" />
                             <span className="leading-relaxed">{feature}</span>
                           </li>
                         ))}
@@ -227,7 +248,7 @@ export default function BukuPage() {
                           {service.price}
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-500">
-                          <span>⏰</span>
+                          <Icon name="clock" className="w-4 h-4" />
                           <span className="font-medium">{service.duration}</span>
                         </div>
                       </div>
@@ -235,7 +256,7 @@ export default function BukuPage() {
 
                     <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
                       <div className="flex items-center justify-center gap-2 text-green-700 font-semibold">
-                        <span>📞</span>
+                        <Icon name="phone" className="w-5 h-5" />
                         <span>Klik card untuk konsultasi via WhatsApp</span>
                       </div>
                       <p className="text-green-600 text-sm mt-1">Gratis & Langsung Terhubung</p>
@@ -245,9 +266,10 @@ export default function BukuPage() {
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center shadow-2xl">
-              <h3 className="text-3xl font-bold mb-4" style={{color: '#000000'}}>Siap Menerbitkan Buku Anda?</h3>
-              <p className="text-xl mb-8 opacity-90" style={{color: '#000000'}}>
+            {/* Call to Action Section */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center text-white shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">Siap Menerbitkan Buku Anda?</h3>
+              <p className="text-xl mb-8 opacity-90">
                 Konsultasikan kebutuhan penerbitan buku kesehatan Anda dengan tim ahli kami
               </p>
               <button 
@@ -262,10 +284,11 @@ export default function BukuPage() {
 
         {activeTab === 'showcase' && (
           <div>
+            {/* Search and Filter */}
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 border border-gray-100">
               <div className="flex flex-col lg:flex-row gap-6">
                 <div className="flex-1 relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">🔍</span>
+                  <Icon name="search" className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
                   <input
                     type="text"
                     placeholder="Cari buku berdasarkan judul, penulis, atau topik kesehatan..."
@@ -275,7 +298,7 @@ export default function BukuPage() {
                   />
                 </div>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">⚙️</span>
+                  <Icon name="filter" className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
@@ -291,6 +314,7 @@ export default function BukuPage() {
               </div>
             </div>
 
+            {/* Showcase Header */}
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Buku-Buku Kesehatan Terbitan UKOM Academy
@@ -300,15 +324,16 @@ export default function BukuPage() {
               </p>
             </div>
 
+            {/* Books Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {filteredBooks.map((book) => (
                 <div key={book.id} className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100">
                   {book.featured && (
                     <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-center py-3">
                       <span className="text-sm font-bold flex items-center justify-center gap-2">
-                        <span>⭐</span>
+                        <Icon name="star" className="w-5 h-5" />
                         FEATURED BOOK - BESTSELLER
-                        <span>⭐</span>
+                        <Icon name="star" className="w-5 h-5" />
                       </span>
                     </div>
                   )}
@@ -318,7 +343,7 @@ export default function BukuPage() {
                       <div className={`${book.coverColor} rounded-xl p-8 text-white relative overflow-hidden group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
                         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                         <div className="relative z-10">
-                          <div className="text-4xl mb-4">📖</div>
+                          <Icon name="book" className="w-10 h-10 mb-4 opacity-90" />
                           <h3 className="font-bold text-xl mb-3 leading-tight">{book.title}</h3>
                           <p className="text-base opacity-90 mb-2">oleh {book.author}</p>
                         </div>
@@ -337,12 +362,12 @@ export default function BukuPage() {
                         </span>
                         <span className="text-gray-400">•</span>
                         <span className="text-gray-600 flex items-center gap-1 font-medium">
-                          <span>📅</span>
+                          <Icon name="calendar" className="w-4 h-4" />
                           {book.publishedDate}
                         </span>
                       </div>
 
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 leading-relaxed line-clamp-4">
                         {book.excerpt}
                       </p>
 
@@ -362,7 +387,7 @@ export default function BukuPage() {
                       {book.testimonial && (
                         <div className="bg-blue-50 border-l-4 border-blue-400 p-5 rounded-lg">
                           <div className="flex items-start gap-3">
-                            <span className="text-blue-600 text-xl">💬</span>
+                            <Icon name="message" className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                             <div>
                               <p className="text-blue-800 italic leading-relaxed font-medium">"{book.testimonial}"</p>
                               <p className="text-blue-600 text-sm mt-2 font-semibold">- Reviewer Profesional</p>
@@ -380,10 +405,10 @@ export default function BukuPage() {
                       </div>
 
                       <div className="pt-6 border-t border-gray-200">
-                        <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-black py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl">
-                          <span>📖</span>
+                        <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl">
+                          <Icon name="book" className="w-5 h-5" />
                           Lihat Detail Buku
-                          <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          <Icon name="right" className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                       </div>
                     </div>
@@ -392,10 +417,11 @@ export default function BukuPage() {
               ))}
             </div>
 
+            {/* No Results */}
             {filteredBooks.length === 0 && (
               <div className="text-center py-20">
                 <div className="bg-gray-100 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-8">
-                  <span className="text-6xl text-gray-400">📖</span>
+                  <Icon name="book" className="w-16 h-16 text-gray-400" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Tidak ada buku ditemukan</h3>
                 <p className="text-gray-600 mb-8 text-lg">Coba ubah kata kunci pencarian atau filter kategori</p>
@@ -415,4 +441,6 @@ export default function BukuPage() {
       </div>
     </div>
   );
-}
+};
+
+export default BukuPageContent;

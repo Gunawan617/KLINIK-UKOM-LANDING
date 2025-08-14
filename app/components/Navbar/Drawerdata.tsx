@@ -14,6 +14,7 @@ const navigation: NavigationItem[] = [
   // { name: 'Mentor', href: '#mentor', current: false },
   { name: 'Buku', href: '/buku', current: false },
   { name: 'Tryout', href: '/tryout', current: false },
+  { name: 'Opini', href: '/opini', current: false },
   // { name: 'Group', href: '#/', current: false },
   // { name: 'Testimonial', href: '#testimonial', current: false },
 ]
