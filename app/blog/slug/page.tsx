@@ -101,64 +101,6 @@ const DUMMY_POSTS: Post[] = [
     image: "/api/placeholder/800/400?text=State+Management",
     createdAt: "2024-12-07T12:25:00Z"
   }
-]; Express framework.\n\nKita akan mulai dengan setup project dan konfigurasi dasar Express. Setelah itu, kita akan membahas routing, middleware, dan error handling. Express menyediakan struktur yang flexible untuk membangun API dengan berbagai kompleksitas.\n\nAuthentication adalah aspek penting dalam API development. Kita akan implementasi JWT (JSON Web Tokens) untuk autentikasi user. JWT memberikan cara yang secure dan stateless untuk mengelola session user.\n\nValidasi input juga sangat penting untuk security dan data integrity. Kita akan menggunakan library seperti Joi atau express-validator untuk memvalidasi request body dan parameters.\n\nDatabase integration dengan MongoDB atau PostgreSQL akan dibahas lengkap, termasuk connection pooling, query optimization, dan migration strategies. Kita juga akan membahas testing dengan Jest dan documentation dengan tools seperti Swagger.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-    createdAt: "2024-12-13T09:15:00Z"
-  },
-  {
-    id: 4,
-    title: "Database Design Best Practices untuk Aplikasi Web",
-    slug: "database-design-best-practices-aplikasi-web",
-    summary: "Pelajari cara merancang database yang efisien dan scalable. Dari normalisasi hingga indexing, semua konsep penting dibahas dengan contoh real-world.",
-    content: "Database design yang baik adalah fondasi dari aplikasi yang sukses. Design yang buruk akan menyebabkan performance issues, data inconsistency, dan maintenance nightmare. Artikel ini akan membahas best practices untuk database design.\n\nNormalisasi adalah konsep fundamental yang harus dipahami setiap developer. Kita akan membahas normal forms (1NF, 2NF, 3NF) dan kapan kita perlu melakukan denormalization untuk performance optimization.\n\nIndexing strategy sangat crucial untuk query performance. Kita akan belajar berbagai jenis index (B-tree, Hash, Bitmap) dan kapan menggunakan masing-masing. Composite index dan covering index juga akan dibahas detail.\n\nRelationship design antara tables memerlukan pemahaman yang mendalam. One-to-one, one-to-many, dan many-to-many relationships memiliki implementation pattern yang berbeda-beda.\n\nScaling strategy seperti partitioning, sharding, dan replication akan dibahas untuk menangani aplikasi dengan traffic tinggi. Kita juga akan membahas CAP theorem dan trade-offs dalam distributed database systems.",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=400&fit=crop",
-    createdAt: "2024-12-12T16:45:00Z"
-  },
-  {
-    id: 5,
-    title: "Modern CSS Techniques: Grid, Flexbox, dan CSS Variables",
-    slug: "modern-css-techniques-grid-flexbox-variables",
-    summary: "Explore teknik CSS modern yang akan membuat workflow development Anda lebih efisien. Dari CSS Grid hingga Custom Properties, semuanya ada di sini.",
-    content: "CSS telah berkembang pesat dalam beberapa tahun terakhir. Modern CSS techniques memungkinkan kita untuk membuat layout yang complex dengan kode yang lebih clean dan maintainable.\n\nCSS Grid adalah revolutionary layout system yang memungkinkan kita membuat 2D layouts dengan mudah. Tidak seperti Flexbox yang fokus pada 1D layout, Grid memberikan kontrol penuh atas rows dan columns.\n\nFlexbox tetap relevan untuk 1D layouts dan alignment. Kombinasi Grid dan Flexbox adalah power combo untuk membuat responsive layouts. Kita akan belajar kapan menggunakan masing-masing.\n\nCSS Custom Properties (CSS Variables) memberikan dynamic behavior pada CSS. Kita bisa membuat theming system, responsive breakpoints, dan animation yang lebih flexible.\n\nModern CSS juga includes features seperti CSS Container Queries, CSS Subgrid, dan CSS Logical Properties. Features ini memungkinkan kita membuat designs yang truly responsive dan adaptable.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop",
-    createdAt: "2024-12-11T11:30:00Z"
-  },
-  {
-    id: 6,
-    title: "Deployment Strategies untuk Aplikasi JavaScript",
-    slug: "deployment-strategies-aplikasi-javascript",
-    summary: "Panduan lengkap untuk deploy aplikasi JavaScript ke berbagai platform. Dari Vercel hingga AWS, pelajari pro dan cons masing-masing platform.",
-    content: "Deployment adalah tahap terakhir yang sama pentingnya dengan development. Pilihan deployment strategy yang tepat akan menentukan performance, scalability, dan maintenance cost aplikasi kita.\n\nVercel adalah platform yang sangat popular untuk Next.js applications. Built-in support untuk serverless functions, edge computing, dan automatic HTTPS membuat deployment menjadi sangat simple.\n\nNetlify adalah alternatif yang excellent untuk static sites dan JAMstack applications. Features seperti form handling, identity management, dan split testing sangat berguna untuk marketing websites.\n\nAWS menyediakan flexibility dan scalability yang tidak terbatas. Services seperti EC2, Lambda, CloudFront, dan RDS bisa dikombinasikan untuk membuat architecture yang robust.\n\nDocker containerization memungkinkan consistent deployment across different environments. Kubernetes orchestration menambahkan layer scaling dan management yang powerful untuk production workloads.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
-    createdAt: "2024-12-10T13:20:00Z"
-  },
-  {
-    id: 7,
-    title: "Testing dalam JavaScript: Unit, Integration, dan E2E",
-    slug: "testing-javascript-unit-integration-e2e",
-    summary: "Menguasai berbagai jenis testing untuk memastikan aplikasi JavaScript Anda reliable dan maintainable. Lengkap dengan tools dan best practices.",
-    content: "Testing adalah investasi jangka panjang untuk kualitas kode. Aplikasi yang well-tested lebih mudah di-maintain, di-refactor, dan memiliki fewer bugs di production.\n\nUnit testing fokus pada testing individual functions atau components dalam isolation. Jest adalah testing framework yang paling popular di JavaScript ecosystem. Kita akan belajar writing effective unit tests dengan good coverage.\n\nIntegration testing memverifikasi bahwa different parts of aplikasi bekerja dengan baik together. Testing database connections, API endpoints, dan component interactions adalah contoh integration testing.\n\nEnd-to-end testing mensimulasikan real user interactions dengan aplikasi. Tools seperti Cypress dan Playwright memungkinkan kita untuk automate browser testing dengan syntax yang intuitive.\n\nTest-Driven Development (TDD) adalah methodology dimana kita menulis test sebelum menulis code. Approach ini memastikan code coverage yang tinggi dan design yang lebih modular.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop",
-    createdAt: "2024-12-09T08:45:00Z"
-  },
-  {
-    id: 8,
-    title: "Security Best Practices untuk Web Development",
-    slug: "security-best-practices-web-development",
-    summary: "Pelajari cara melindungi aplikasi web dari berbagai ancaman keamanan. Dari XSS hingga SQL Injection, ketahui cara pencegahan yang efektif.",
-    content: "Keamanan web bukan lagi pilihan, tetapi keharusan di era digital. Cyber attacks semakin sophisticated, dan developer harus memahami common vulnerabilities dan cara pencegahannya.\n\nCross-Site Scripting (XSS) adalah salah satu attack yang paling common. Input sanitization, output encoding, dan Content Security Policy (CSP) adalah defense mechanisms yang effective.\n\nSQL Injection dapat dicegah dengan menggunakan parameterized queries atau ORM yang proper. Never trust user input dan always validate data sebelum processing.\n\nAuthentication dan authorization harus diimplementasikan dengan benar. Strong password policies, multi-factor authentication, dan session management yang secure adalah basics yang harus ada.\n\nHTTPS, CORS, dan security headers seperti X-Frame-Options dan X-Content-Type-Options memberikan additional layer of protection. Regular security audits dan dependency updates juga penting untuk maintaining security posture.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
-    createdAt: "2024-12-08T15:10:00Z"
-  },
-  {
-    id: 9,
-    title: "State Management dalam React: Redux vs Zustand vs Context",
-    slug: "state-management-react-redux-zustand-context",
-    summary: "Perbandingan mendalam tentang berbagai solusi state management dalam React. Ketahui kapan menggunakan masing-masing dan trade-offs nya.",
-    content: "State management adalah salah satu aspek terpenting dalam pengembangan aplikasi React. Pilihan state management solution yang tepat akan menentukan maintainability dan scalability aplikasi.\n\nReact Context API adalah built-in solution yang simple untuk sharing state across components. Cocok untuk applications dengan state requirements yang moderate dan tidak memerlukan complex state updates.\n\nRedux adalah mature library dengan ecosystem yang besar. Redux Toolkit (RTK) membuat Redux development menjadi lebih simple dengan less boilerplate. Time travel debugging dan predictable state updates adalah keunggulan Redux.\n\nZustand adalah lightweight alternative yang growing in popularity. API yang simple, TypeScript support yang excellent, dan performance yang baik membuat Zustand menarik untuk many use cases.\n\nJotai dan Recoil adalah atomic state management solutions yang memungkinkan fine-grained state subscriptions. Approach ini dapat memberikan better performance untuk applications dengan complex state dependencies.",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop",
-    createdAt: "2024-12-07T12:25:00Z"
-  }
 ];
 
 // Generate metadata for SEO

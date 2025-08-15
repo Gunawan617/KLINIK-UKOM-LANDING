@@ -389,7 +389,10 @@ const BukuPageContent = () => {
                           <div className="flex items-start gap-3">
                             <Icon name="message" className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                             <div>
-                              <p className="text-blue-800 italic leading-relaxed font-medium">"{book.testimonial}"</p>
+                              {/* <p className="text-blue-800 italic leading-relaxed font-medium">"{book.testimonial}"</p> */}
+                              <p className="text-blue-800 italic leading-relaxed font-medium">
+                              &quot;{book.testimonial}&quot;
+                              </p>
                               <p className="text-blue-600 text-sm mt-2 font-semibold">- Reviewer Profesional</p>
                             </div>
                           </div>
