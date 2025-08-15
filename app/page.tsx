@@ -15,6 +15,7 @@ export default function Home() {
       <Mentor />
       <Testimonials />
       {/* <Newsletter /> */}
+      <WhatAppFloating />
     </main>
   )
 }
