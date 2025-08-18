@@ -13,7 +13,7 @@ const navigation: NavigationItem[] = [
   // { name: 'Courses', href: '#courses', current: false },
   // { name: 'Mentor', href: '#mentor', current: false },
   { name: 'Buku', href: '/buku', current: false },
-  { name: 'Tryout', href: '/tryout', current: false },
+  { name: 'Bimbel', href: '/bimbel', current: false },
   { name: 'Blog', href: '/blog', current: false },
   // { name: 'Group', href: '#/', current: false },
   // { name: 'Testimonial', href: '#testimonial', current: false },

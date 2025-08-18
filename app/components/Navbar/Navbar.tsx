@@ -19,7 +19,7 @@ const navigation: NavigationItem[] = [
     // { name: 'Courses', href: '#courses', current: false },
     // { name: 'Mentor', href: '#mentor', current: false },
     { name: 'Buku', href: '/buku', current: false },
-    { name: 'Tryout', href: '/tryout', current: false },
+    { name: 'Bimbel', href: '/bimbel', current: false },
     { name: 'Blog', href: '/blog', current: false },
     // { name: 'Testimonial', href: '#testimonial', current: false },
 ];
@@ -85,9 +85,10 @@ const Navbar = () => {
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
                                 />
-                                <span className="text-sm font-bold text-gray-800 text-center lg:text-left lg:text-lg">
-                                    Bimbel & Penerbitan Buku
+                                <span className="hidden lg:block text-sm font-bold text-gray-800 text-center lg:text-left lg:text-lg">
+                                Bimbel & Penerbitan Buku
                                 </span>
+
                             </div>   
                             <div>
                                 
