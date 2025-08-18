@@ -117,7 +117,7 @@ export default class MultipleItems extends Component {
         return (
             <div className="py-10 sm:py-24 bg-paleblue" id="mentor">
                 <div className='mx-auto max-w-2xl lg:max-w-7xl sm:py-4 px-4 lg:px-8 relative'>
-                    <h2 className="lh-82 text-midnightblue text-4xl md:text-55xl text-center md:text-start font-semibold">Belajar dari Mentor Ahli <br /></h2>
+                    <h2 className="lh-82 text-midnightblue text-4xl md:text-55xl text-center md:text-start font-semibold">Dibimbing dengan dosen Ahli<br /></h2>
 
                     <Slider {...settings}>
                         {postData.map((items, i) => (
