@@ -88,10 +88,10 @@ import Image from 'next/image';
 
 const Banner = () => {
   const teamMembers = [
-    { name: 'Bang Awan', src: '/assets/banner/Awan.png' },
-    { name: 'Bang Bian', src: '/assets/banner/Bian.png' },
-    { name: 'Bang Naufal', src: '/assets/banner/Naufal.png' },
-    { name: 'Bang Rezz', src: '/assets/banner/Rezz.png' },
+    { name: 'Kak Awan', src: '/assets/banner/Awan.png' },
+    { name: 'Kak Bian', src: '/assets/banner/Bian.png' },
+    { name: 'Kak Naufal', src: '/assets/banner/Naufal.png' },
+    { name: 'Kak Rezz', src: '/assets/banner/Rezz.png' },
   ];
 
   return (

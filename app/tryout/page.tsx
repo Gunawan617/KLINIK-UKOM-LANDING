@@ -79,12 +79,43 @@ export default function TryoutPage() {
   const [selectedProgram, setSelectedProgram] = useState('');
   const [selectedPackage, setSelectedPackage] = useState('');
 
-  const programs = [
-    { code: 'UAAPT', name: 'UKOM Profesi Apoteker', category: 'Kesehatan', participants: '12,500+' },
-    { code: 'UADOK', name: 'UKOM Profesi Dokter', category: 'Kesehatan', participants: '8,200+' },
-    { code: 'UAPER', name: 'UKOM Profesi Perawat', category: 'Kesehatan', participants: '15,300+' },
-    { code: 'UABID', name: 'UKOM Profesi Bidan', category: 'Kesehatan', participants: '9,800+' }
+  // const programs = [
+  //   { code: 'UAAPT', name: 'UKOM Profesi Apoteker', category: 'Kesehatan', participants: '12,500+' },
+  //   { code: 'UANUT', name: 'UKOM Profesi Nutrisi', category: 'Kesehatan', participants: '8,200+' },
+  //   { code: 'UAPER', name: 'UKOM Profesi Perawat', category: 'Kesehatan', participants: '15,300+' },
+  //   { code: 'UABID', name: 'UKOM Profesi Bidan', category: 'Kesehatan', participants: '9,800+' }
+  // ];
+    const programs = [
+    { 
+      code: 'UAAPT', 
+      name: 'UKOM Profesi Apoteker', 
+      category: 'Kesehatan', 
+      participants: '12,500+',
+      image: '/images/apoteker.png' 
+    },
+    { 
+      code: 'UANUT', 
+      name: 'UKOM Profesi Nutrisi', 
+      category: 'Kesehatan', 
+      participants: '8,200+',
+      image: '/images/nutrisi.png' 
+    },
+    { 
+      code: 'UAPER', 
+      name: 'UKOM Profesi Perawat', 
+      category: 'Kesehatan', 
+      participants: '15,300+',
+      image: '/images/perawat.png' 
+    },
+    { 
+      code: 'UABID', 
+      name: 'UKOM Profesi Bidan', 
+      category: 'Kesehatan', 
+      participants: '9,800+',
+      image: '/images/bidan.png' 
+    }
   ];
+
 
   const packages = [
     {
@@ -239,10 +270,13 @@ export default function TryoutPage() {
               <div 
                 key={program.code}
                 className={`bg-white border-2 rounded-lg p-6 cursor-pointer transition-all duration-300 hover:shadow-lg ${
+                  
                   selectedProgram === program.code 
                     ? 'border-blue-500 bg-blue-50' 
                     : 'border-gray-200 hover:border-gray-300'
-                }`}
+                    
+                }`
+              }
                 onClick={() => setSelectedProgram(program.code)}
               >
                 <div className="text-center space-y-4">

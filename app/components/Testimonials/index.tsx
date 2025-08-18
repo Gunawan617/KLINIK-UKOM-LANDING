@@ -16,41 +16,59 @@ interface DataType {
   const postData: DataType[] = 
     [
     {
-        name: "dr. Lestari Wulandari, M.Kep",
-        profession: "Pengajar Keperawatan",
-        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Ners. Materi yang diberikan jelas dan mudah dipahami.",
-        imgSrc: "/assets/testimonial/user.svg",
+        name: "Retno Wulan, S.ST., M.Keb",
+        profession: "Bidan",
+        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
+        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
     },
-    {
-        name: "Siti Rahmawati, S.ST",
-        profession: "Bidan Praktisi & Mentor",
-        comment: "Metode belajar interaktifnya bikin saya lebih percaya diri menghadapi ujian. Sangat direkomendasikan untuk calon bidan!",
-        imgSrc: "/assets/mentor/user2.png",
+     {
+        name: "Retno Wulan, S.ST., M.Keb",
+        profession: "Bidan",
+        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
+        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
     },
-    {
-        name: "Ahmad Faizal, S.Kep., Ners",
-        profession: "Alumni Bimbel Ners",
-        comment: "Pengajarnya berpengalaman dan sangat mendukung. Saya lulus UKOM di percobaan pertama berkat bimbel ini.",
-        imgSrc: "/assets/mentor/user3.png",
+     {
+        name: "Retno Wulan, S.ST., M.Keb",
+        profession: "Bidan",
+        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
+        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
     },
-    {
-        name: "dr. Lestari Wulandari, M.Kep",
-        profession: "Pengajar Keperawatan",
-        comment: "Pendekatan belajarnya sangat cocok untuk mahasiswa yang butuh bimbingan intensif. Top banget!",
-        imgSrc: "/assets/mentor/user1.png",
+     {
+        name: "Retno Wulan, S.ST., M.Keb",
+        profession: "Bidan",
+        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
+        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
     },
-    {
-        name: "Siti Rahmawati, S.ST",
-        profession: "Bidan Praktisi & Mentor",
-        comment: "Sistem soal dan pembahasannya sangat lengkap. Cocok untuk yang mau lulus UKOM dengan nilai tinggi.",
-        imgSrc: "/assets/mentor/user2.png",
-    },
-    {
-        name: "Ahmad Faizal, S.Kep., Ners",
-        profession: "Alumni Bimbel Ners",
-        comment: "Belajarnya fleksibel tapi tetap terstruktur. Cocok banget buat yang sambil kerja atau koas.",
-        imgSrc: "/assets/mentor/user3.png",
-    },
+    // {
+    //     name: "Siti Rahmawati, S.ST",
+    //     profession: "Bidan Praktisi & Mentor",
+    //     comment: "Metode belajar interaktifnya bikin saya lebih percaya diri menghadapi ujian. Sangat direkomendasikan untuk calon bidan!",
+    //     imgSrc: "/assets/mentor/user2.png",
+    // },
+    // {
+    //     name: "Ahmad Faizal, S.Kep., Ners",
+    //     profession: "Alumni Bimbel Ners",
+    //     comment: "Pengajarnya berpengalaman dan sangat mendukung. Saya lulus UKOM di percobaan pertama berkat bimbel ini.",
+    //     imgSrc: "/assets/mentor/user3.png",
+    // },
+    // {
+    //     name: "dr. Lestari Wulandari, M.Kep",
+    //     profession: "Pengajar Keperawatan",
+    //     comment: "Pendekatan belajarnya sangat cocok untuk mahasiswa yang butuh bimbingan intensif. Top banget!",
+    //     imgSrc: "/assets/mentor/user1.png",
+    // },
+    // {
+    //     name: "Siti Rahmawati, S.ST",
+    //     profession: "Bidan Praktisi & Mentor",
+    //     comment: "Sistem soal dan pembahasannya sangat lengkap. Cocok untuk yang mau lulus UKOM dengan nilai tinggi.",
+    //     imgSrc: "/assets/mentor/user2.png",
+    // },
+    // {
+    //     name: "Ahmad Faizal, S.Kep., Ners",
+    //     profession: "Alumni Bimbel Ners",
+    //     comment: "Belajarnya fleksibel tapi tetap terstruktur. Cocok banget buat yang sambil kerja atau koas.",
+    //     imgSrc: "/assets/mentor/user3.png",
+    // },
     ]
 
 // CAROUSEL SETTINGS
@@ -108,26 +126,35 @@ export default class MultipleItems extends Component {
                     <Slider {...settings}>
                         {postData.map((items, i) => (
                             <div key={i}>
-                                <div className={`bg-white m-4 p-5 my-20 relative ${i % 2 ? 'middleDiv' : 'testimonial-shadow'}`}>
-                                    <div className="absolute top-[-45px]">
-                                        <Image src={items.imgSrc} alt={items.imgSrc} width={100} height={100} className="inline-block" />
-                                    </div>
-                                    <h4 className='text-base font-normal text-darkgray my-4'>{items.comment}</h4>
-                                    <hr style={{ color: "#D7D5D5" }} />
-                                    <div className="flex justify-between">
-                                        <div>
-                                            <h3 className='text-lg font-medium text-darkbrown pt-4 pb-2'>{items.name}</h3>
-                                            <h3 className='text-sm font-normal text-lightgray pb-2'>{items.profession}</h3>
-                                        </div>
-                                        <div className="flex">
-                                            <StarIcon width={20} className="text-gold" />
-                                            <StarIcon width={20} className="text-gold" />
-                                            <StarIcon width={20} className="text-gold" />
-                                            <StarIcon width={20} className="text-gold" />
-                                            <StarIcon width={20} className="text-lightgray" />
-                                        </div>
-                                    </div>
+                                                            <div className={`bg-white m-4 p-5 pt-16 my-20 relative ${i % 2 ? 'middleDiv' : 'testimonial-shadow'}`}>
+                            <div className="absolute top-[-50px] left-1/2 transform -translate-x-1/2">
+                                <div className="w-[100px] h-[100px] rounded-full overflow-hidden border-4 border-white shadow-md">
+                                <Image 
+                                    src={items.imgSrc} 
+                                    alt={items.name} 
+                                    width={100} 
+                                    height={100} 
+                                    className="object-cover w-full h-full"
+                                />
                                 </div>
+                            </div>
+                            <h4 className='text-base font-normal text-darkgray my-4 mt-6'>{items.comment}</h4>
+                            <hr className="text-gray-300" />
+                            <div className="flex justify-between">
+                                <div>
+                                <h3 className='text-lg font-medium text-darkbrown pt-4 pb-2'>{items.name}</h3>
+                                <h3 className='text-sm font-normal text-lightgray pb-2'>{items.profession}</h3>
+                                </div>
+                                <div className="flex">
+                                <StarIcon width={20} className="text-gold" />
+                                <StarIcon width={20} className="text-gold" />
+                                <StarIcon width={20} className="text-gold" />
+                                <StarIcon width={20} className="text-gold" />
+                                <StarIcon width={20} className="text-lightgray" />
+                                </div>
+                            </div>
+                            </div>
+
                             </div>
                         ))}
                     </Slider>
