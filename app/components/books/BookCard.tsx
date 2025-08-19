@@ -56,4 +56,6 @@ export default function BookCard({ book, searchQuery = "", onDetail, onBuy }: Bo
       </div>
     </div>
   )
+
+  
 }

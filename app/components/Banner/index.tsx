@@ -12,7 +12,7 @@ const Banner = () => {
   return (
     <section
       id="home-section"
-      className="bg-lightkblue font-sans min-h-screen flex items-start lg:items-center py-10 w-full overflow-hidden"
+      className="bg-lightkblue font-sans min-h-[80vh] flex items-start lg:items-center py-6 w-full overflow-hidden"
     >
       <div className="mx-auto max-w-7xl w-full px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-12">

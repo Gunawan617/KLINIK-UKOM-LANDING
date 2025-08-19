@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Drawer from "./Drawer";
 import Drawerdata from "./Drawerdata";
-import Signdialog from "./Signdialog";
-import Registerdialog from "./Registerdialog";
+// import Signdialog from "./Signdialog";
+// import Registerdialog from "./Registerdialog";
+import { FaWhatsapp } from 'react-icons/fa';
+import WhatsAppLink from './WhatsappButton';
 
 
 interface NavigationItem {
@@ -15,12 +17,13 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-    { name: 'Kelas', href: '#/', current: true },
+    { name: 'Beranda', href: '#/', current: true },
     // { name: 'Courses', href: '#courses', current: false },
     // { name: 'Mentor', href: '#mentor', current: false },
     { name: 'Buku', href: '/buku', current: false },
     { name: 'Bimbel', href: '/bimbel', current: false },
-    { name: 'Blog', href: '/blog', current: false },
+    // { name: 'Blog', href: '/blog', current: false },
+    { name: 'Faq', href: '/faq', current: false },
     // { name: 'Testimonial', href: '#testimonial', current: false },
 ];
 
@@ -71,6 +74,7 @@ const Navbar = () => {
                                     src={'/assets/logo/logo1.png'}
                                     alt="dsign-logo"
                                 />
+                                
                                 {/* logo2 */}
                             </div>
                                <div className="flex flex-shrink-0 items-center">
@@ -85,9 +89,9 @@ const Navbar = () => {
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
                                 />
-                                <span className="hidden lg:block text-sm font-bold text-gray-800 text-center lg:text-left lg:text-lg">
+                                {/* <span className="hidden lg:block text-sm font-bold text-gray-800 text-center lg:text-left lg:text-lg">
                                 Bimbel & Penerbitan Buku
-                                </span>
+                                </span> */}
 
                             </div>   
                             <div>
@@ -120,20 +124,19 @@ const Navbar = () => {
                         </div>
 
                         {/* SIGNIN DIALOG */}
-
-                        <Signdialog />
+{/* 
+                        <Signdialog /> */}
 
 
                         {/* REGISTER DIALOG */}
 
-                        <Registerdialog />
+                        {/* <Registerdialog /> */}
 
-
-                        {/* DRAWER FOR MOBILE VIEW */}
-
+                        {/* WHATSAPP ICON */}
+                        <WhatsAppLink />
                         {/* DRAWER ICON */}
 
-                        <div className='block lg:hidden'>
+                     <div className='block lg:hidden'>
                             <Bars3Icon className="block h-6 w-6" aria-hidden="true" onClick={() => setIsOpen(true)} />
                         </div>
 

@@ -73,7 +73,7 @@ const bimbelPrograms = [
     name: "Bimbel Bidan",
     category: "Kesehatan",
     participants: "6,800+",
-    image: "https://picsum.photos/seed/bidan/600/400", // gambar random, auto-fit
+    image: "assets/major/Klinik kebidanan.png", // gambar random, auto-fit
     description:
       "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
   },
@@ -82,7 +82,7 @@ const bimbelPrograms = [
     name: "Bimbel Perawat",
     category: "Kesehatan",
     participants: "9,200+",
-    image: "https://picsum.photos/seed/perawat/800/600",
+    image: "assets/major/Klinik Keperawatan.png",
     description:
       "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
   },

@@ -3,73 +3,18 @@ import Slider from "react-slick";
 import React, { Component } from "react";
 import { StarIcon } from '@heroicons/react/24/solid';
 import Image from "next/image";
+import { postData } from "./PostData"; // path relatif sesuai folder
+
 
 // CAROUSEL DATA
 
-interface DataType {
-    profession: string;
-    comment: string;
-    imgSrc: string;
-    name: string;
-}
-
-  const postData: DataType[] = 
-    [
-    {
-        name: "Retno Wulan, S.ST., M.Keb",
-        profession: "Bidan",
-        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
-        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
-    },
-     {
-        name: "Retno Wulan, S.ST., M.Keb",
-        profession: "Bidan",
-        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
-        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
-    },
-     {
-        name: "Retno Wulan, S.ST., M.Keb",
-        profession: "Bidan",
-        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
-        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
-    },
-     {
-        name: "Retno Wulan, S.ST., M.Keb",
-        profession: "Bidan",
-        comment: "Bimbel ini sangat membantu dalam persiapan Uji Kompetensi Bidan. Materinya jelas, mudah dipahami, dan sesuai dengan kebutuhan praktik kebidanan.",
-        imgSrc: "/assets/testimonial/Retno Wulan - Bidan R Wulan-modified.png",
-    },
-    // {
-    //     name: "Siti Rahmawati, S.ST",
-    //     profession: "Bidan Praktisi & Mentor",
-    //     comment: "Metode belajar interaktifnya bikin saya lebih percaya diri menghadapi ujian. Sangat direkomendasikan untuk calon bidan!",
-    //     imgSrc: "/assets/mentor/user2.png",
-    // },
-    // {
-    //     name: "Ahmad Faizal, S.Kep., Ners",
-    //     profession: "Alumni Bimbel Ners",
-    //     comment: "Pengajarnya berpengalaman dan sangat mendukung. Saya lulus UKOM di percobaan pertama berkat bimbel ini.",
-    //     imgSrc: "/assets/mentor/user3.png",
-    // },
-    // {
-    //     name: "dr. Lestari Wulandari, M.Kep",
-    //     profession: "Pengajar Keperawatan",
-    //     comment: "Pendekatan belajarnya sangat cocok untuk mahasiswa yang butuh bimbingan intensif. Top banget!",
-    //     imgSrc: "/assets/mentor/user1.png",
-    // },
-    // {
-    //     name: "Siti Rahmawati, S.ST",
-    //     profession: "Bidan Praktisi & Mentor",
-    //     comment: "Sistem soal dan pembahasannya sangat lengkap. Cocok untuk yang mau lulus UKOM dengan nilai tinggi.",
-    //     imgSrc: "/assets/mentor/user2.png",
-    // },
-    // {
-    //     name: "Ahmad Faizal, S.Kep., Ners",
-    //     profession: "Alumni Bimbel Ners",
-    //     comment: "Belajarnya fleksibel tapi tetap terstruktur. Cocok banget buat yang sambil kerja atau koas.",
-    //     imgSrc: "/assets/mentor/user3.png",
-    // },
-    ]
+// interface DataType {
+//     profession: string;
+//     comment: string;
+//     imgSrc: string;
+//     name: string;
+// }
+   
 
 // CAROUSEL SETTINGS
 
