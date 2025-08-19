@@ -1,211 +1,159 @@
-"use client"
-import Slider from "react-slick";
-import React, { Component } from "react";
+"use client";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { StarIcon } from '@heroicons/react/24/solid'
-
-// CAROUSEL DATA
+import { StarIcon } from "@heroicons/react/24/solid";
 
 interface DataType {
-    heading: string;
-    heading2: string;
-    imgSrc: string;
-    videoUrl?: string;
-    name: string;
-    students: number;
-    classes: number;
-    // price: number;
-    rating: number;
+  heading: string;
+  heading2: string;
+  imgSrc: string;
+  videoUrl?: string;
+  name: string;
+  students: number;
+  classes: number;
+  rating: number;
 }
 
 const postData: DataType[] = [
-    {
-        heading: 'Pembahasan Soal',
-        heading2: 'Perawat',
-        name: "Dr. Neny Triana, S.Kep., Ns., M.Pd., M.Kep.",
-        imgSrc: '/assets/courses/courseone.png',
-        videoUrl: "https://www.youtube.com/embed/NWOVGQbsEpg",
-        students: 150,
-        classes: 12,
-        // price: 20,
-        rating: 4.7,
-    },
-    {
-        heading: 'Pembahasan Soal',
-        heading2: 'Perawat bersama',
-        name: "Ria Anugrahwati, Ners., M.Kep.",
-        imgSrc: '/assets/courses/coursetwo.png',
-        videoUrl: "https://www.youtube.com/embed/VmBHRObsXQ0",
-        students: 130,
-        classes: 12,
-        // price: 20,
-        rating: 4.7,
-    },
-    {
-        heading: 'Pembahasan Soal UKOM' ,
-        heading2: 'D3 Lab Medis',
-        name: "Sabrina P. M. Pinontoan, S.Pd., M.Si.",
-        imgSrc: '/assets/courses/coursethree.png',
-        videoUrl: "https://www.youtube.com/embed/RHHT-v5mTEw",
-        students: 120,
-        classes: 12,
-        // price: 20,
-        rating: 4.7,
-    },
-    // {
-    //     heading: 'We Launch Delia',
-    //     heading2: 'Webflow this Week!',
-    //     name: "Colt stelle",
-    //     imgSrc: '/assets/courses/courseone.png',
-    //     videoUrl: "https://www.youtube.com/embed/u8QsqypGfrs",
-    //     students: 150,
-    //     classes: 12,
-    //     // price: 20,
-    //     rating: 4.7,
-    // },
-    // {
-    //     heading: 'We Launch Delia',
-    //     heading2: 'Webflow this Week!',
-    //     name: "Colt stelle",
-    //     imgSrc: '/assets/courses/coursetwo.png',
-    //     students: 150,
-    //     classes: 12,
-    //     price: 20,
-    //     rating: 4.7,
-    // },
-    // {
-    //     heading: 'We Launch Delia',
-    //     heading2: 'Webflow this Week!',
-    //     name: "Colt stelle",
-    //     imgSrc: '/assets/courses/coursethree.png',
-    //     students: 150,
-    //     classes: 12,
-    //     price: 20,
-    //     rating: 4.7,
-    // },
-]
+  {
+    heading: "Pembahasan Soal",
+    heading2: "Perawat",
+    name: "Dr. Neny Triana, S.Kep., Ns., M.Pd., M.Kep.",
+    imgSrc: "/assets/courses/courseone.png",
+    videoUrl: "https://www.youtube.com/embed/NWOVGQbsEpg",
+    students: 150,
+    classes: 12,
+    rating: 4.7,
+  },
+  {
+    heading: "Pembahasan Soal",
+    heading2: "Perawat bersama",
+    name: "Ria Anugrahwati, Ners., M.Kep.",
+    imgSrc: "/assets/courses/coursetwo.png",
+    videoUrl: "https://www.youtube.com/embed/VmBHRObsXQ0",
+    students: 130,
+    classes: 12,
+    rating: 4.7,
+  },
+  {
+    heading: "Pembahasan Soal UKOM",
+    heading2: "D3 Lab Medis",
+    name: "Sabrina P. M. Pinontoan, S.Pd., M.Si.",
+    imgSrc: "/assets/courses/coursethree.png",
+    videoUrl: "https://www.youtube.com/embed/RHHT-v5mTEw",
+    students: 120,
+    classes: 12,
+    rating: 4.7,
+  },
+];
 
-// CAROUSEL SETTINGS
+const CoursesList = () => {
+  return (
+    <section id="courses" className="py-12">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+          <h3 className="text-midnightblue text-3xl md:text-4xl font-semibold">
+            Pratinjau Pembelajaran
+          </h3>
+          <Link
+            href={"/"}
+            className="text-Blueviolet text-lg font-medium hover:underline"
+          >
+            Lihat Lebih Lanjut &gt;
+          </Link>
+        </div>
 
+        {/* Cards wrapper */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {postData.map((items, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-courses overflow-hidden flex flex-col"
+            >
+              {/* Media */}
+              <div className="relative w-full aspect-video">
+                {items.videoUrl ? (
+                  <iframe
+                    src={items.videoUrl}
+                    title={items.heading}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  ></iframe>
+                ) : (
+                  <Image
+                    src={items.imgSrc}
+                    alt={items.heading}
+                    fill
+                    className="object-cover rounded-t-2xl"
+                  />
+                )}
 
-export default class MultipleItems extends Component {
-
-    render() {
-        const settings = {
-            dots: false,
-            infinite: true,
-            slidesToShow: 3,
-            // centerMode: true,
-            slidesToScroll: 2,
-            arrows: false,
-            autoplay: false,
-            speed: 500,
-            cssEase: "linear",
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false
-                    }
-                }
-            ]
-        };
-
-
-        return (
-            <div id="courses">
-                <div className='mx-auto max-w-7xl sm:py-8 px-4 lg:px-8 '>
-
-                    <div className="sm:flex justify-between items-center">
-                        <h3 className="text-midnightblue text-4xl lg:text-55xl font-semibold mb-5 sm:mb-0">Pratinjau Pembelajaran</h3>
-                        <Link href={'/'} className="text-Blueviolet text-lg font-medium space-links">Lihat Lebih lanjut&nbsp;&gt;&nbsp;</Link>
-                    </div>
-
-
-                    <Slider {...settings}>
-                        {postData.map((items, i) => (
-                            <div key={i}>
-
-                                <div className='bg-white m-3 px-3 pt-3 pb-12 my-20 shadow-courses rounded-2xl'>
-                                    <div className="relative rounded-3xl">
-                                        {/* <Image src={items.imgSrc} alt="gaby" width={389} height={262} className="m-auto clipPath" /> */}
-                                        {items.videoUrl ? (
-                                        <iframe
-                                            width="389"
-                                            height="262"
-                                            src={items.videoUrl}
-                                            title={items.heading}
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                            className="m-auto rounded-3xl"
-                                        ></iframe>
-                                        ) : (
-                                        <Image src={items.imgSrc} alt={items.heading} width={389} height={262} className="m-auto clipPath" />
-                                        )}
-
-                                        <div className="absolute right-5 -bottom-2 bg-ultramarine rounded-full p-6">
-                                            <h3 className="text-white uppercase text-center text-sm font-medium">best <br /> seller</h3>
-                                        </div>
-                                    </div>
-
-                                    <div className="px-3">
-                                        <h4 className='text-2xl font-bold pt-6 text-black'>{items.heading}</h4>
-                                        <h4 className='text-2xl font-bold pt-1 text-black'>{items.heading2}</h4>
-
-                                        <div>
-                                            <h3 className='text-base font-normal pt-6 opacity-75'>{items.name}</h3>
-                                        </div>
-
-                                        <div className="flex justify-between items-center py-6">
-                                            <div className="flex gap-4">
-                                                <h3 className="text-red text-22xl font-medium">{items.rating}</h3>
-                                                <div className="flex">
-                                                    <StarIcon className="h-5 w-5 text-gold" />
-                                                    <StarIcon className="h-5 w-5 text-gold" />
-                                                    <StarIcon className="h-5 w-5 text-gold" />
-                                                    <StarIcon className="h-5 w-5 text-gold" />
-                                                    <StarIcon className="h-5 w-5 text-gold" />
-                                                </div>
-                                            </div>
-                                            {/* <div>
-                                                <h3 className="text-3xl font-medium">${items.price}</h3>
-                                            </div> */}
-                                        </div>
-
-                                        <hr style={{ color: "#C4C4C4" }} />
-
-                                        <div className="flex justify-between pt-6">
-                                            <div className="flex gap-4">
-                                                <Image src={'/assets/courses/book-open.svg'} alt="users" width={24} height={24} className="inline-block m-auto" />
-                                                <h3 className="text-base font-medium text-black opacity-75">{items.classes} classes</h3>
-                                            </div>
-                                            <div className="flex gap-4">
-                                                <Image src={'/assets/courses/users.svg'} alt="users" width={24} height={24} className="inline-block m-auto" />
-                                                <h3 className="text-base font-medium text-black opacity-75">{items.students} students</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
+                <div className="absolute right-3 bottom-3 bg-ultramarine rounded-full px-4 py-2 shadow-md">
+                  <h3 className="text-white uppercase text-xs font-medium text-center">
+                    Best Seller
+                  </h3>
                 </div>
-            </div>
+              </div>
 
-        );
-    }
-}
+              {/* Content */}
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <h4 className="text-lg md:text-xl font-bold text-black">
+                    {items.heading}
+                  </h4>
+                  <h4 className="text-lg md:text-xl font-bold text-black">
+                    {items.heading2}
+                  </h4>
+                  <p className="text-sm text-gray-600 mt-3">{items.name}</p>
+                </div>
+
+                {/* Rating */}
+                <div className="flex justify-between items-center mt-5">
+                  <div className="flex gap-2 items-center">
+                    <span className="text-red text-xl font-semibold">
+                      {items.rating}
+                    </span>
+                    <div className="flex">
+                      {[...Array(5)].map((_, idx) => (
+                        <StarIcon key={idx} className="h-5 w-5 text-gold" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <hr className="my-4 border-gray-300" />
+
+                {/* Info */}
+                <div className="flex justify-between text-sm text-gray-700">
+                  <div className="flex gap-2 items-center">
+                    <Image
+                      src={"/assets/courses/book-open.svg"}
+                      alt="classes"
+                      width={20}
+                      height={20}
+                    />
+                    <span>{items.classes} classes</span>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <Image
+                      src={"/assets/courses/users.svg"}
+                      alt="students"
+                      width={20}
+                      height={20}
+                    />
+                    <span>{items.students} students</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CoursesList;
