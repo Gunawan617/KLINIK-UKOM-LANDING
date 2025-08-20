@@ -65,7 +65,7 @@ const WhatsAppIcon = ({ className = "" }) => (
 );
 
 /* =============== Data =============== */
-const WA_NUMBER = "6281234567890"; // TODO: ganti dengan nomor admin kamu
+const WA_NUMBER = "6281295012668"; // TODO: ganti dengan nomor admin kamu
 
 const bimbelPrograms = [
   {
@@ -73,18 +73,16 @@ const bimbelPrograms = [
     name: "Bimbel Bidan",
     category: "Kesehatan",
     participants: "6,800+",
-    image: "assets/major/Klinik kebidanan.png", // gambar random, auto-fit
-    description:
-      "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
+    image: "assets/major/Bidan.png",
+    description: "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
   },
   {
     code: "PERAWAT",
     name: "Bimbel Perawat",
     category: "Kesehatan",
     participants: "9,200+",
-    image: "assets/major/Klinik Keperawatan.png",
-    description:
-      "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
+    image: "assets/major/Perawat.png",
+    description: "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
   },
 ];
 
@@ -145,28 +143,28 @@ const packages = [
 
 const alumni = [
   {
-    name: "Aulia Putri",
+    name: "Febri Tri Ayu Sari, S.Keb.",
     program: "Bidan",
     passed: "Lulus UKOM 2024",
-    image: "https://picsum.photos/seed/alumni1/300/500",
+    image: "assets/testimonial/Alumni Bidan/Bdn. Febri Tri Ayu Sari, S.Keb..jpeg",
   },
   {
-    name: "Rizky Saputra",
+    name: "Yudhi Kumala Sakti S.Kep.Ners.",
     program: "Perawat",
     passed: "Lulus UKOM 2024",
-    image: "https://picsum.photos/seed/alumni2/500/300",
+    image: "assets/testimonial/Alumni Perawat/Yudhi Kumala Sakti S.Kep.Ners..jpeg",
   },
   {
-    name: "Siti Rahma",
+    name: "YUNANDA RIZKY MAHARANI, S. Tr. Keb.",
     program: "Bidan",
     passed: "Lulus UKOM 2025",
-    image: "https://picsum.photos/seed/alumni3/200/200",
+    image: "assets/testimonial/Alumni Bidan/YUNANDA RIZKY MAHARANI, S. Tr. Keb .jpeg",
   },
   {
-    name: "Dimas Aditya",
+    name: "Petrosina P Irmuply Amd.Kep.jpeg",
     program: "Perawat",
     passed: "Lulus UKOM 2025",
-    image: "https://picsum.photos/seed/alumni4/900/1200",
+    image: "assets/testimonial/Alumni Perawat/Petrosina P Irmuply Amd.Kep.jpeg",
   },
 ];
 
@@ -288,54 +286,60 @@ export default function BimbelPage() {
       </section>
 
       {/* ===== Program Selection (Bidan & Perawat) ===== */}
-      <section className="py-16">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Pilih Program Bimbel</h2>
-            <p className="text-xl text-gray-600">Sesuaikan dengan profesi Anda</p>
-          </div>
+  <section className="py-16">
+  <div className="container mx-auto px-6 max-w-6xl">
+    {/* Header */}
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        Pilih Program Bimbel
+      </h2>
+      <p className="text-xl text-gray-600">
+        Sesuaikan dengan profesi Anda
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {bimbelPrograms.map((program) => (
-              <div
-                key={program.code}
-                className={`bg-white border-2 rounded-lg p-6 cursor-pointer transition-all duration-300 hover:shadow-lg ${
-                  selectedProgram === program.code
-                    ? "border-blue-500 bg-blue-50"
-                    : "border-gray-200 hover:border-gray-300"
-                }`}
-                onClick={() => setSelectedProgram(program.code)}
-              >
-                <div className="flex items-center gap-5">
-                  {/* Thumbnail auto-fit ke card */}
-                  <div className="w-28 h-20 rounded-md overflow-hidden bg-blue-100 flex-shrink-0">
-                    <img
-                      src={program.image}
-                      alt={program.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 text-lg">{program.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{program.category}</p>
-                    <p className="text-xs text-blue-600">{program.participants} peserta</p>
-                  </div>
-                  <BookOpen className="w-6 h-6 text-blue-600" />
-                </div>
+    {/* Grid Banner */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {bimbelPrograms.map((program) => (
+        <div
+          key={program.code}
+          className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-2 ${
+            selectedProgram === program.code
+              ? "border-blue-500"
+              : "border-gray-200 hover:border-gray-300"
+          }`}
+          onClick={() => setSelectedProgram(program.code)}
+        >
+          {/* Banner Image */}
+          <img
+            src={program.image}
+            alt={program.name}
+            className="w-full h-56 md:h-72 object-cover"
+          />
 
-                <p className="mt-4 text-sm text-gray-700">{program.description}</p>
-
-                {selectedProgram === program.code && (
-                  <div className="mt-4 text-blue-600 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5" />
-                    <span className="text-sm font-medium">Dipilih</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          {/* Status Dipilih */}
+            {selectedProgram === program.code && (
+            <div className="p-4 bg-blue-50 text-blue-600 flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span className="text-sm font-medium">Dipilih</span>
+           <a
+            href={`https://wa.me/${+6281295012668}?text=${encodeURIComponent(`Halo, saya ingin bertanya tentang ${program.name}. ${program.description}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Hubungi Sekarang
+          </a>
+            </div>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* ===== Detail Bimbel (metode, materi, fasilitas, jadwal) ===== */}
       <section className="py-16 bg-gray-50">

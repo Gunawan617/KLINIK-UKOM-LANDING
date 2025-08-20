@@ -4,8 +4,20 @@ interface DataType {
     imgSrc: string;
     name: string;
 }
-   
-export const postData: DataType[] = [
+
+// fungsi shuffle (Fisher–Yates)
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+
+
+
+const rawData: DataType[]  = [
   // ================== BIDAN ==================
   {
     name: "Bdn. Diyah Mayanti, S.keb",
@@ -82,3 +94,4 @@ export const postData: DataType[] = [
     imgSrc: "/assets/testimonial/Alumni Perawat/Yudhi Kumala Sakti S.Kep.Ners..jpeg",
   },
 ];
+ export const postData: DataType[] = shuffleArray(rawData);

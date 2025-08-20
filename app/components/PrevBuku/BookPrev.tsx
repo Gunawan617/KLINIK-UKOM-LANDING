@@ -11,7 +11,7 @@ const BookPrev: React.FC = () => {
   };
 
   const handleBuy = (book: Book) => {
-    const whatsappNumber = "6281234567890";
+    const whatsappNumber = "6281295012668";
     const message = `Halo, saya ingin membeli buku "${book.title}" seharga ${book.price}. Mohon informasi lebih lanjut.`;
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encoded}`, "_blank");
@@ -28,17 +28,17 @@ const BookPrev: React.FC = () => {
         </div>
 
         {/* Grid Buku Responsive */}
-<div className="grid gap-8 justify-center grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
-  {books.map((book) => (
-    <BookCard
-      key={book.id}
-      book={book}
-      searchQuery=""
-      onDetail={handleDetail}
-      onBuy={handleBuy}
-    />
-  ))}
-</div>
+      <div className="grid gap-8 justify-center grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
+        {books.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            searchQuery=""
+            onDetail={handleDetail}
+            onBuy={handleBuy}
+          />
+        ))}
+      </div>
 
 
         <div className="text-center mt-12">

@@ -92,7 +92,8 @@ const BimbelPrev: React.FC = () => {
             <div className="flex space-x-2">
               {/* Hubungi Sekarang di kiri */}
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/6281295012668"
+              
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-lg transition-colors"

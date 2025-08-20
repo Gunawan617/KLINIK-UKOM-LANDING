@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function FloatingWhatsApp() {
-  const phoneNumber = "628123456789";
+  const phoneNumber = "6281295012668";
   const message = "Halo, saya ingin bertanya...";
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

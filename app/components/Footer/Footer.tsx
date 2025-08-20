@@ -15,8 +15,8 @@ interface socialLinks {
 
 const socialLinks: socialLinks[] = [
     {
-        imgSrc: '/assets/footer/facebook.svg',
-        link: 'www.facebook.com',
+        imgSrc: '/assets/footer/tiktok.svg',
+        link: 'https://www.tiktok.com/@klinik.ukom',
         width: 10
     },
     {

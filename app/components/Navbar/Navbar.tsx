@@ -20,8 +20,8 @@ const navigation: NavigationItem[] = [
     { name: 'Beranda', href: '#/', current: true },
     // { name: 'Courses', href: '#courses', current: false },
     // { name: 'Mentor', href: '#mentor', current: false },
-    { name: 'Buku', href: '/buku', current: false },
     { name: 'Bimbel', href: '/bimbel', current: false },
+    { name: 'Buku', href: '/buku', current: false },
     // { name: 'Blog', href: '/blog', current: false },
     { name: 'Faq', href: '/faq', current: false },
     // { name: 'Testimonial', href: '#testimonial', current: false },
@@ -63,7 +63,7 @@ const Navbar = () => {
 
                             {/* LOGO */}
 
-                            <div className="flex flex-shrink-0 items-center">
+                            <div className="flex flex-shrink-0 items-center"onClick={() => window.location.href = '/'}>
                                 <img
                                     className="block h-[100px] w-auto object-contain lg:hidden"
                                     src={'/assets/logo/logo1.png'}
@@ -74,11 +74,8 @@ const Navbar = () => {
                                     src={'/assets/logo/logo1.png'}
                                     alt="dsign-logo"
                                 />
-                                
-                                {/* logo2 */}
-                            </div>
-                               <div className="flex flex-shrink-0 items-center">
-                                <img
+
+                                  <img
                                     className="block h-[100px] w-auto object-contain lg:hidden"
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
@@ -89,13 +86,6 @@ const Navbar = () => {
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
                                 />
-                                {/* <span className="hidden lg:block text-sm font-bold text-gray-800 text-center lg:text-left lg:text-lg">
-                                Bimbel & Penerbitan Buku
-                                </span> */}
-
-                            </div>   
-                            <div>
-                                
                             </div>
 
                             {/* LINKS */}

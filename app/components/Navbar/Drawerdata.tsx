@@ -12,8 +12,8 @@ const navigation: NavigationItem[] = [
   { name: 'Beranda', href: '/', current: true },
   // { name: 'Courses', href: '#courses', current: false },
   // { name: 'Mentor', href: '#mentor', current: false },
-  { name: 'Buku', href: '/buku', current: false },
   { name: 'Bimbel', href: '/bimbel', current: false },
+  { name: 'Buku', href: '/buku', current: false },
   // { name: 'Blog', href: '/blog', current: false },
   { name: 'Faq', href: '/faq', current: false },
   // { name: 'Group', href: '#/', current: false },
@@ -44,12 +44,12 @@ const Data = () => {
               </Link>
             ))}
             <div className="mt-4"></div>
-            <button className="bg-white w-full text-Blueviolet border border-semiblueviolet font-medium py-2 px-4 rounded">
+            {/* <button className="bg-white w-full text-Blueviolet border border-semiblueviolet font-medium py-2 px-4 rounded">
               Log In
             </button>
             <button className="bg-semiblueviolet w-full hover:bg-Blueviolet hover:text-white text-Blueviolet font-medium my-2 py-2 px-4 rounded">
               Sign up
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
