@@ -63,7 +63,7 @@ const Navbar = () => {
 
                             {/* LOGO */}
 
-                            <div className="flex flex-shrink-0 items-center"onClick={() => window.location.href = '/'}>
+                            <div className="flex flex-shrink-0 items-center cursor-pointer"onClick={() => window.location.href = '/'}>
                                 <img
                                     className="block h-[30px] w-auto object-contain lg:hidden"
                                     src={'/assets/logo/logo1.png'}
