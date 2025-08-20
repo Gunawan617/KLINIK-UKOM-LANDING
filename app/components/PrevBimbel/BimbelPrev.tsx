@@ -2,22 +2,23 @@ import React from 'react';
 
 const bimbelPrograms = [
   {
-    code: "BIDAN",
-    name: "Bimbel Bidan",
+    code: "UKOM_BIDAN",
+    name: "Bimbel Persiapan UKOM Bidan",
     category: "Kesehatan",
     participants: "6,800+",
     image: "assets/major/Bidan.png",
-    description: "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
+    description: "Program intensif persiapan Uji Kompetensi Bidan dengan materi lengkap, latihan soal, dan simulasi berbasis SKL terbaru.",
   },
   {
-    code: "PERAWAT",
-    name: "Bimbel Perawat",
+    code: "UKOM_PERAWAT",
+    name: "Bimbel Persiapan UKOM Perawat",
     category: "Kesehatan",
     participants: "9,200+",
     image: "assets/major/Perawat.png",
-    description: "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
+    description: "Kelas persiapan Uji Kompetensi Perawat dengan pendalaman materi, bank soal UKOM, serta tryout untuk meningkatkan kelulusan.",
   },
 ];
+
 
 const alumni = [
   {

@@ -65,24 +65,24 @@ const Navbar = () => {
 
                             <div className="flex flex-shrink-0 items-center"onClick={() => window.location.href = '/'}>
                                 <img
-                                    className="block h-[100px] w-auto object-contain lg:hidden"
+                                    className="block h-[30px] w-auto object-contain lg:hidden"
                                     src={'/assets/logo/logo1.png'}
                                     alt="dsign-logo"
                                 />
                                 <img
-                                    className="hidden h-[100px] w-auto object-contain lg:block"
+                                    className="hidden h-[30px] w-auto object-contain lg:block"
                                     src={'/assets/logo/logo1.png'}
                                     alt="dsign-logo"
                                 />
 
                                   <img
-                                    className="block h-[100px] w-auto object-contain lg:hidden"
+                                    className="block h-[30px] w-auto object-contain lg:hidden"
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
                                     
                                 />
                                 <img
-                                    className="hidden h-[100px] w-auto object-contain lg:block"
+                                    className="hidden h-[30px] w-auto object-contain lg:block"
                                     src={'/assets/logo/logo2.png'}
                                     alt="dsign-logo"
                                 />

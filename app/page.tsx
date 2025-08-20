@@ -7,6 +7,7 @@ import Newsletter from './components/Newsletter/Newsletter';
 import WhatAppFloating from './components/FloatingWhatsApp/FloatingWhatsApp';;
 import { BookPrev } from './components/PrevBuku';
 import { BimbelPrev } from './components/PrevBimbel';
+import { TryoutPrev } from './components/PrevTryout';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <BimbelPrev />
       <Courses />
       <BookPrev />
+      <TryoutPrev />
       <Mentor />
       <Testimonials />
       {/* <Newsletter /> */}
