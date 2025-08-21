@@ -31,25 +31,24 @@ const socialLinks: socialLinks[] = [
     },
 
 ]
-
-const products: ProductType[] = [
+    const products: ProductType[] = [
     {
         id: 1,
-        section: "Company",
-        link: ['About', 'Careers', 'Mobile', 'Blog', 'How we work?'],
+        section: "Bimbel UKOM",
+        link: ["Tentang Kami", "Program", "Materi", "Fasilitas"],
     },
     {
         id: 2,
-        section: "Contact",
-        link: ['Help/FAQ', 'Press', 'Affiliates', 'Hotel owners', 'Partners']
-    }
-    ,
+        section: "Informasi",
+        link: ["Jadwal", "Biaya", "FAQ", "Testimoni"],
+    },
     {
         id: 3,
-        section: "More",
-        link: ['Airline fees', 'Airlines', 'Low fare tips', 'Badges &', 'Certificates']
-    }
-]
+        section: "Hubungi Kami",
+        link: ["WhatsApp", "Email", "Instagram", "TikTok"],
+    },
+    ];
+
 
 const footer = () => {
     return (

@@ -9,11 +9,12 @@ export default function BukuPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
-    const books: Book[] = [
-    {
+
+ const books: Book[] = [
+ {
       id: 1,
       title: "Panduan Lengkap UKOM Keperawatan 2024",
-      author: "Dr. Siti Nurhaliza, S.Kep., Ns., M.Kep",
+      author: "Tri Ratnaningsih dkk.",
       category: "UKOM Keperawatan",
       excerpt: "Buku panduan lengkap dengan soal-soal prediksi UKOM terbaru...",
       description:
@@ -24,7 +25,7 @@ export default function BukuPage() {
     {
       id: 2,
       title: "Rahasia Sukses UKOM Bidan",
-      author: "Prof. Dr. Ahmad Wijaya, Apt., M.Farm., Ph.D",
+      author: "Atika Zahria Arisanti dkk.",
       category: "UKOM Bidan",
       excerpt: "Panduan lengkap dan strategi sukses menghadapi UKOM Bidan...",
       description:
@@ -35,7 +36,7 @@ export default function BukuPage() {
     {
       id: 3,
       title: "Rangkuman Materi Keperawatan Terintegrasi UKOM 2025",
-      author: "Dr. Andi Putra, S.Kep., Ns., M.Kep",
+      author: "M Iqbal Angga Kusuma S.Kep.,Ns., M.Kep dkk.",
       category: "UKOM Keperawatan",
       excerpt: "Rangkuman materi keperawatan lengkap untuk persiapan UKOM...",
       description:
@@ -44,8 +45,8 @@ export default function BukuPage() {
       coverImage: "assets/books/Rangkuman Materi Keperawatan Terintegrasi ukom 2025.png",
     },
 
-    
-  ];
+  
+]
 
 
   const categories = ["all", ...new Set(books.map((b) => b.category))]

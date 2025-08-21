@@ -7,7 +7,7 @@ export const books: Book[] = [
  {
       id: 1,
       title: "Panduan Lengkap UKOM Keperawatan 2024",
-      author: "Dr. Siti Nurhaliza, S.Kep., Ns., M.Kep",
+      author: "Tri Ratnaningsih dkk.",
       category: "UKOM Keperawatan",
       excerpt: "Buku panduan lengkap dengan soal-soal prediksi UKOM terbaru...",
       description:
@@ -18,7 +18,7 @@ export const books: Book[] = [
     {
       id: 2,
       title: "Rahasia Sukses UKOM Bidan",
-      author: "Prof. Dr. Ahmad Wijaya, Apt., M.Farm., Ph.D",
+      author: "Atika Zahria Arisanti dkk.",
       category: "UKOM Bidan",
       excerpt: "Panduan lengkap dan strategi sukses menghadapi UKOM Bidan...",
       description:
@@ -29,7 +29,7 @@ export const books: Book[] = [
     {
       id: 3,
       title: "Rangkuman Materi Keperawatan Terintegrasi UKOM 2025",
-      author: "Dr. Andi Putra, S.Kep., Ns., M.Kep",
+      author: "M Iqbal Angga Kusuma S.Kep.,Ns., M.Kep dkk.",
       category: "UKOM Keperawatan",
       excerpt: "Rangkuman materi keperawatan lengkap untuk persiapan UKOM...",
       description:
