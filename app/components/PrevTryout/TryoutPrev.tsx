@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const tryoutPrograms = [
   {
@@ -31,7 +31,8 @@ const TryoutPrev: React.FC = () => {
             Tryout UKOM Online Terpercaya
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang akurat dan sesuai standar nasional
+            Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang akurat
+            dan sesuai standar nasional
           </p>
         </div>
 
@@ -40,10 +41,10 @@ const TryoutPrev: React.FC = () => {
           {tryoutPrograms.map((program) => (
             <div
               key={program.code}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
-              {/* Image */}
-              <div className="md:w-1/2 h-48 md:h-auto overflow-hidden">
+              {/* Image only */}
+              <div className="w-full aspect-[4/3] overflow-hidden">
                 <img
                   src={program.image}
                   alt={program.name}
@@ -51,43 +52,30 @@ const TryoutPrev: React.FC = () => {
                 />
               </div>
 
-              {/* Info */}
-              <div className="flex-1 p-5 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">
-                    {program.name}
-                  </h3>
-                  <p className="text-sm text-blue-400 mb-3">
-                    {program.participants} peserta aktif
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {program.description}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+              {/* Buttons + Category */}
+              <div className="flex items-center justify-between p-4">
+                {/* Kiri = Tombol + Category */}
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://wa.me/6281295012668"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
+                  >
+                    Hubungi Sekarang
+                  </a>
+                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-2 rounded">
                     {program.category}
                   </span>
-                  <div className="flex space-x-2">
-                    {/* Hubungi Sekarang */}
-                    <a
-                      href="https://wa.me/6281295012668"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-lg transition-colors"
-                    >
-                      Hubungi Sekarang
-                    </a>
-
-                    {/* Lihat Detail */}
-                    <a
-                      href="/tryout"
-                      className="text-blue-400 hover:text-blue-500 text-xs font-medium px-2 py-1 border border-blue-400 rounded-lg"
-                    >
-                      Lihat Detail →
-                    </a>
-                  </div>
                 </div>
+
+                {/* Kanan = Lihat Detail */}
+                <a
+                  href="/bimbel"
+                  className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
+                >
+                  Lihat Detail →
+                </a>
               </div>
             </div>
           ))}

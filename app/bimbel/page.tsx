@@ -4,40 +4,70 @@ import React, { useMemo, useState } from "react";
 
 /* ================= Icons (SVG) ================= */
 const Play = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <polygon points="5,3 19,12 5,21 5,3"></polygon>
   </svg>
 );
 
 const Clock = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <circle cx="12" cy="12" r="10"></circle>
     <polyline points="12,6 12,12 16,14"></polyline>
   </svg>
 );
 
 const CheckCircle = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
     <polyline points="22,4 12,14.01 9,11.01"></polyline>
   </svg>
 );
 
 const Star = ({ className = "" }) => (
-  <svg className={className} fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="currentColor"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"></polygon>
   </svg>
 );
 
 const BookOpen = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
   </svg>
 );
 
 const Target = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <circle cx="12" cy="12" r="10"></circle>
     <circle cx="12" cy="12" r="6"></circle>
     <circle cx="12" cy="12" r="2"></circle>
@@ -45,20 +75,40 @@ const Target = ({ className = "" }) => (
 );
 
 const User = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+    />
   </svg>
 );
 
 const ArrowRight = ({ className = "" }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <line x1="5" y1="12" x2="19" y2="12"></line>
     <polyline points="12,5 19,12 12,19"></polyline>
   </svg>
 );
 
 const WhatsAppIcon = ({ className = "" }) => (
-  <svg className={className} viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+  <svg
+    className={className}
+    viewBox="0 0 32 32"
+    fill="currentColor"
+    aria-hidden="true"
+  >
     <path d="M19.11 17.34c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.27-.8-.64-1.34-1.42-1.5-1.66-.16-.27-.02-.41.11-.55.11-.11.25-.27.36-.41.11-.14.16-.23.25-.39.09-.18.05-.32-.02-.46-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.46.07-.7.32-.25.27-.95.93-.95 2.27 0 1.34.98 2.63 1.11 2.81.14.18 1.93 2.95 4.67 4.02.65.27 1.16.43 1.56.55.65.2 1.23.18 1.7.11.52-.07 1.6-.66 1.82-1.3.23-.64.23-1.18.16-1.3-.05-.14-.23-.2-.5-.34z" />
     <path d="M26.62 5.38C23.84 2.6 20.12 1.06 16.16 1.06 8.62 1.06 2.42 7.26 2.42 14.8c0 2.4.64 4.75 1.86 6.83L2 30.94l9.5-2.23c1.99 1.09 4.24 1.67 6.65 1.67 7.54 0 13.74-6.2 13.74-13.74 0-3.96-1.54-7.68-4.32-10.46zm-10.46 23.1c-2.22 0-4.39-.59-6.29-1.71l-.45-.27-5.64 1.32 1.34-5.49-.29-.45c-1.16-1.9-1.78-4.09-1.78-6.33 0-6.71 5.46-12.17 12.17-12.17 3.25 0 6.31 1.26 8.61 3.56 2.31 2.31 3.58 5.37 3.58 8.61 0 6.71-5.46 12.17-12.17 12.17z" />
   </svg>
@@ -74,7 +124,8 @@ const bimbelPrograms = [
     category: "Kesehatan",
     participants: "6,800+",
     image: "assets/major/Bidan.png",
-    description: "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
+    description:
+      "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
   },
   {
     code: "PERAWAT",
@@ -82,7 +133,8 @@ const bimbelPrograms = [
     category: "Kesehatan",
     participants: "9,200+",
     image: "assets/major/Perawat.png",
-    description: "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
+    description:
+      "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
   },
 ];
 
@@ -141,8 +193,6 @@ const packages = [
   },
 ];
 
-
-
 const tryoutPrograms = [
   {
     code: "BIDAN",
@@ -169,19 +219,22 @@ const alumni = [
     name: "Febri Tri Ayu Sari, S.Keb.",
     program: "Bidan",
     passed: "Lulus UKOM 2024",
-    image: "assets/testimonial/Alumni Bidan/Bdn. Febri Tri Ayu Sari, S.Keb..jpeg",
+    image:
+      "assets/testimonial/Alumni Bidan/Bdn. Febri Tri Ayu Sari, S.Keb..jpeg",
   },
   {
     name: "Yudhi Kumala Sakti S.Kep.Ners.",
     program: "Perawat",
     passed: "Lulus UKOM 2024",
-    image: "assets/testimonial/Alumni Perawat/Yudhi Kumala Sakti S.Kep.Ners..jpeg",
+    image:
+      "assets/testimonial/Alumni Perawat/Yudhi Kumala Sakti S.Kep.Ners..jpeg",
   },
   {
     name: "YUNANDA RIZKY MAHARANI, S. Tr. Keb.",
     program: "Bidan",
     passed: "Lulus UKOM 2025",
-    image: "assets/testimonial/Alumni Bidan/YUNANDA RIZKY MAHARANI, S. Tr. Keb .jpeg",
+    image:
+      "assets/testimonial/Alumni Bidan/YUNANDA RIZKY MAHARANI, S. Tr. Keb .jpeg",
   },
   {
     name: "Petrosina P Irmuply Amd.Kep.jpeg",
@@ -202,16 +255,20 @@ export default function BimbelPage() {
 
   const selectedProgramObj = useMemo(
     () => bimbelPrograms.find((p) => p.code === selectedProgram),
-    [selectedProgram]
+    [selectedProgram],
   );
   const selectedPackageObj = useMemo(
     () => packages.find((p) => p.id === selectedPackage),
-    [selectedPackage]
+    [selectedPackage],
   );
 
   const waMessage = useMemo(() => {
-    const prog = selectedProgramObj ? selectedProgramObj.name : "(belum pilih program)";
-    const pack = selectedPackageObj ? selectedPackageObj.name : "(belum pilih paket)";
+    const prog = selectedProgramObj
+      ? selectedProgramObj.name
+      : "(belum pilih program)";
+    const pack = selectedPackageObj
+      ? selectedPackageObj.name
+      : "(belum pilih paket)";
     return `Halo Admin, saya mau daftar Bimbel.\nProgram: ${prog}\nPaket: ${pack}\nMohon info pendaftaran & jadwal 🙏`;
   }, [selectedProgramObj, selectedPackageObj]);
 
@@ -229,14 +286,17 @@ export default function BimbelPage() {
                   <span className="block text-blue-600">Bidan & Perawat</span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Program bimbingan belajar intensif untuk menyiapkan UKOM secara terarah:
-                  materi fokus kompetensi, latihan soal melimpah, dan pendampingan mentor.
+                  Program bimbingan belajar intensif untuk menyiapkan UKOM
+                  secara terarah: materi fokus kompetensi, latihan soal
+                  melimpah, dan pendampingan mentor.
                 </p>
               </div>
               <div className="flex flex-wrap gap-8">
                 <div className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  <span className="text-gray-700">Kurikulum sesuai blueprint</span>
+                  <span className="text-gray-700">
+                    Kurikulum sesuai blueprint
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
@@ -250,7 +310,9 @@ export default function BimbelPage() {
 
               <div className="flex gap-3">
                 <a
-                  href={buildWaLink("Halo Admin, saya ingin konsultasi program Bimbel.")}
+                  href={buildWaLink(
+                    "Halo Admin, saya ingin konsultasi program Bimbel.",
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white px-5 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
@@ -270,7 +332,9 @@ export default function BimbelPage() {
             {/* Right — Alumni (auto-fit images) */}
             <div className="space-y-6">
               <div className="text-right">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Alumni</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  Alumni
+                </h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {alumni.map((al, idx) => (
@@ -285,7 +349,8 @@ export default function BimbelPage() {
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
                             target.style.display = "none";
-                            const fallback = target.nextElementSibling as HTMLElement | null;
+                            const fallback =
+                              target.nextElementSibling as HTMLElement | null;
                             if (fallback) fallback.style.display = "flex";
                           }}
                         />
@@ -309,68 +374,68 @@ export default function BimbelPage() {
       </section>
 
       {/* ===== Program Selection (Bidan & Perawat) ===== */}
-  <section className="py-16">
-  <div className="container mx-auto px-6 max-w-6xl">
-    {/* Header */}
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">
-        Pilih Program Bimbel
-      </h2>
-      <p className="text-xl text-gray-600">
-        Sesuaikan dengan profesi Anda
-      </p>
-    </div>
+      <section className="py-16">
+        <div className="container mx-auto px-6 max-w-6xl">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Pilih Program Bimbel
+            </h2>
+            <p className="text-xl text-gray-600">
+              Sesuaikan dengan profesi Anda
+            </p>
+          </div>
 
-    {/* Grid Banner */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {bimbelPrograms.map((program) => (
-        <div
-          key={program.code}
-          className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-2 ${
-            selectedProgram === program.code
-              ? "border-blue-500"
-              : "border-gray-200 hover:border-gray-300"
-          }`}
-          onClick={() => setSelectedProgram(program.code)}
-        >
-          {/* Banner Image */}
-          <img
-            src={program.image}
-            alt={program.name}
-            className="w-full h-56 md:h-72 object-cover"
-          />
+          {/* Grid Banner */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {bimbelPrograms.map((program) => (
+              <div
+                key={program.code}
+                className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-2 ${
+                  selectedProgram === program.code
+                    ? "border-blue-500"
+                    : "border-gray-200 hover:border-gray-300"
+                }`}
+                onClick={() => setSelectedProgram(program.code)}
+              >
+                {/* Banner Image */}
+                <img
+                  src={program.image}
+                  alt={program.name}
+                  className="w-full h-56 md:h-72 object-cover"
+                />
 
-          {/* Status Dipilih */}
-            {selectedProgram === program.code && (
-            <div className="p-4 bg-blue-50 text-blue-600 flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span className="text-sm font-medium">Dipilih</span>
-           <a
-            href={`https://wa.me/${+6281295012668}?text=${encodeURIComponent(`Halo, saya ingin bertanya tentang ${program.name}. ${program.description}`)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Hubungi Sekarang
-          </a>
-            </div>
-          )}
+                {/* Status Dipilih */}
+                {selectedProgram === program.code && (
+                  <div className="p-4 bg-blue-50 text-blue-600 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">Dipilih</span>
+                    <a
+                      href={`https://wa.me/${+6281295012668}?text=${encodeURIComponent(`Halo, saya ingin bertanya tentang ${program.name}. ${program.description}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Hubungi Sekarang
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-
-
+      </section>
 
       {/* ===== Detail Bimbel (metode, materi, fasilitas, jadwal) ===== */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Detail Program Bimbel</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Detail Program Bimbel
+            </h2>
             <p className="text-xl text-gray-600">
-              Metode belajar efektif, materi fokus, dan pendampingan sampai paham
+              Metode belajar efektif, materi fokus, dan pendampingan sampai
+              paham
             </p>
           </div>
 
@@ -445,7 +510,7 @@ export default function BimbelPage() {
                 onClick={() => setSelectedPackage(pkg.id)}
               >
                 {/* Banner auto-fit: berapa pun ukuran gambar → ngepas */}
-                {/* <div className="relative h-48">
+      {/* <div className="relative h-48">
                   <img
                     src={pkg.banner}
                     alt={pkg.name}
@@ -518,98 +583,87 @@ export default function BimbelPage() {
             ))}
           </div>
         </div>
-      // </section> */}   
-
+      // </section> */}
 
       <section className="py-2 bg-blue-50 mt-0">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">
-            Tryout UKOM Online Terpercaya
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang akurat dan sesuai standar nasional
-          </p>
-        </div>
+        <div className="container mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              Tryout UKOM Online Terpercaya
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang
+              akurat dan sesuai standar nasional
+            </p>
+          </div>
 
-        {/* Grid Program */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-          {tryoutPrograms.map((program) => (
-            <div
-              key={program.code}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
-            >
-              {/* Image */}
-              <div className="md:w-1/2 h-48 md:h-auto overflow-hidden">
-                <img
-                  src={program.image}
-                  alt={program.name}
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Info */}
-              <div className="flex-1 p-5 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">
-                    {program.name}
-                  </h3>
-                  <p className="text-sm text-blue-400 mb-3">
-                    {program.participants} peserta aktif
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {program.description}
-                  </p>
+          {/* Grid Program */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+            {tryoutPrograms.map((program) => (
+              <div
+                key={program.code}
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              >
+                {/* Image only */}
+                <div className="w-full aspect-[4/3] overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.name}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                    {program.category}
-                  </span>
-                  <div className="flex space-x-2">
-                    {/* Hubungi Sekarang */}
+
+                {/* Buttons + Category */}
+                <div className="flex items-center justify-between p-4">
+                  {/* Kiri = Tombol + Category */}
+                  <div className="flex items-center gap-2">
                     <a
                       href="https://wa.me/6281295012668"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-lg transition-colors"
+                      className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
                     >
                       Hubungi Sekarang
                     </a>
-
-                    {/* Lihat Detail */}
-                    <a
-                      href="/tryout"
-                      className="text-blue-400 hover:text-blue-500 text-xs font-medium px-2 py-1 border border-blue-400 rounded-lg"
-                    >
-                      Lihat Detail →
-                    </a>
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-2 rounded">
+                      {program.category}
+                    </span>
                   </div>
+
+                  {/* Kanan = Lihat Detail */}
+                  <a
+                    href="/bimbel"
+                    className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
+                  >
+                    Lihat Detail →
+                  </a>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Button */}
+          {/* Button */}
           <div className="text-center">
-        <a
-          href="https://wa.me/6281295012668?text=Halo%20saya%20ingin%20ikut%20tryout"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-400 hover:bg-blue-500 transition-colors"
-        >
-          Ikuti Tryout Sekarang
-        </a>
-         </div>
-      </div>
-    </section>
+            <a
+              href="https://wa.me/6281295012668?text=Halo%20saya%20ingin%20ikut%20tryout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-400 hover:bg-blue-500 transition-colors"
+            >
+              Ikuti Tryout Sekarang
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ===== Rekomendasi Kami (dinamis berdasar pilihan) ===== */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Rekomendasi dari Kami</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Rekomendasi dari Kami
+            </h2>
             <p className="text-xl text-gray-600">
               Pilih paket yang paling pas untuk target kelulusan kamu
             </p>
@@ -617,27 +671,31 @@ export default function BimbelPage() {
 
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg p-6 border">
-              <h3 className="font-bold text-gray-900 mb-2">Baru Mulai / Dasar</h3>
+              <h3 className="font-bold text-gray-900 mb-2">
+                Baru Mulai / Dasar
+              </h3>
               <p className="text-sm text-gray-700">
                 Kalau kamu masih pemula atau baru memulai persiapan,
-                <span className="font-semibold"> Reguler</span> sudah cukup untuk
-                menguasai konsep inti dan latihan soal bertahap.
+                <span className="font-semibold"> Reguler</span> sudah cukup
+                untuk menguasai konsep inti dan latihan soal bertahap.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border">
               <h3 className="font-bold text-gray-900 mb-2">Menjelang Ujian</h3>
               <p className="text-sm text-gray-700">
                 Jika ujian sudah dekat, pilih
-                <span className="font-semibold"> Intensif</span> agar ritme belajar lebih sering,
-                ada coaching mingguan, dan tryout tematik per bab.
+                <span className="font-semibold"> Intensif</span> agar ritme
+                belajar lebih sering, ada coaching mingguan, dan tryout tematik
+                per bab.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border">
               <h3 className="font-bold text-gray-900 mb-2">Mau Maksimal</h3>
               <p className="text-sm text-gray-700">
                 Untuk hasil paling optimal, ambil
-                <span className="font-semibold"> Ultimate</span> — dapat bedah kasus komprehensif,
-                simulasi CBT mirip real, dan pendampingan mentor privat.
+                <span className="font-semibold"> Ultimate</span> — dapat bedah
+                kasus komprehensif, simulasi CBT mirip real, dan pendampingan
+                mentor privat.
               </p>
             </div>
           </div>
@@ -650,15 +708,32 @@ export default function BimbelPage() {
               <ul className="list-disc pl-5 text-sm text-gray-700 space-y-2">
                 {selectedProgramObj.code === "BIDAN" ? (
                   <>
-                    <li>Prioritaskan topik: asuhan persalinan, nifas, neonatus, dan KB.</li>
-                    <li>Perbanyak drilling soal skenario gawat darurat maternal-neonatal.</li>
-                    <li>Jadwalkan review rekaman kelas untuk penguatan konsep.</li>
+                    <li>
+                      Prioritaskan topik: asuhan persalinan, nifas, neonatus,
+                      dan KB.
+                    </li>
+                    <li>
+                      Perbanyak drilling soal skenario gawat darurat
+                      maternal-neonatal.
+                    </li>
+                    <li>
+                      Jadwalkan review rekaman kelas untuk penguatan konsep.
+                    </li>
                   </>
                 ) : (
                   <>
-                    <li>Fokus pada medikal-bedah, gawat darurat, anak, dan komunitas.</li>
-                    <li>Latih interpretasi soal kasus (vital sign, lab, prioritas asuhan).</li>
-                    <li>Gunakan tryout CBT untuk manajemen waktu dan strategi eliminasi.</li>
+                    <li>
+                      Fokus pada medikal-bedah, gawat darurat, anak, dan
+                      komunitas.
+                    </li>
+                    <li>
+                      Latih interpretasi soal kasus (vital sign, lab, prioritas
+                      asuhan).
+                    </li>
+                    <li>
+                      Gunakan tryout CBT untuk manajemen waktu dan strategi
+                      eliminasi.
+                    </li>
                   </>
                 )}
               </ul>
@@ -685,10 +760,9 @@ export default function BimbelPage() {
             }`}
           >
             <WhatsAppIcon className="w-6 h-6" />
-            { !selectedProgram || !selectedPackage
+            {!selectedProgram || !selectedPackage
               ? "Chat Admin via WhatsApp"
-              : "Daftar Sekarang via WhatsApp"
-            }
+              : "Daftar Sekarang via WhatsApp"}
           </a>
         </div>
       </section>
