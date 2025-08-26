@@ -22,7 +22,7 @@ const navigation: NavigationItem[] = [
     // { name: 'Mentor', href: '#mentor', current: false },
     { name: 'Bimbel', href: '/bimbel', current: false },
     { name: 'Buku', href: '/buku', current: false },
-    // { name: 'Blog', href: '/blog', current: false },
+    { name: 'Blog', href: '/blog', current: false },
     { name: 'Faq', href: '/faq', current: false },
     // { name: 'Testimonial', href: '#testimonial', current: false },
 ];

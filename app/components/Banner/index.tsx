@@ -172,8 +172,7 @@ const Banner = () => {
             </h1>
 
             <h3 className="text-charcoal text-base sm:text-lg font-normal text-center lg:text-start opacity-75">
-              Raih kelulusan lebih pasti dengan mentor ahli, kurikulum terarah,
-              dan tryout berbasis kompetensi.
+            Temani perjalananmu Menuju Kompeten 1x Ujian
             </h3>
 
             <div className="bg-white/60 border border-slate-300 rounded-lg p-4 text-sm text-charcoal shadow-sm">

@@ -1,111 +1,121 @@
 export const bidanQuestions = [
   {
     id: 1,
-    question: "Seorang ibu hamil 36 minggu datang dengan tekanan darah 160/100 mmHg dan pembengkakan ekstremitas. Tindakan awal yang tepat adalah?",
+    question: "Perempuan (25 tahun) datang ke TPMB dengan keluhan tidak haid kurang lebih 1 bulan dan mual muntah di pagi hari. Hasil pemeriksaan: TD 100/70 mmHg, N 20 x/menit, P 80 x/menit, S 36,5°C, PPTest (+). Apa penyebab pada kasus tersebut?",
     options: [
-      "Observasi dan kontrol tekanan darah secara rutin",
-      "Berikan antihipertensi oral dan rujuk segera",
-      "Pemberian analgesik untuk nyeri",
-      "Persiapan persalinan normal di rumah"
+      "Penurunan Hormone Esterogen",
+      "Penurunan Hormone Progesterone",
+      "Peningkatan Hormon Plasenta Lactogen",
+      "Peningkatan Melanocyte Stimulating Hormon (MSH)",
+      "Peningkatan Hormon Chorionic Gonadotropin (HCG)"
+    ],
+    answer: 4,
+  },
+  {
+    id: 2,
+    question: "Perempuan (22 tahun, G1P0A0, hamil 20 minggu) datang ke TPMB dengan keluhan terjadi peningkatan berat badan. Hasil pemeriksaan menunjukkan kenaikan dari 53 kg menjadi 62 kg. Apa status indeks massa tubuh pada kasus tersebut?",
+    options: [
+      "Berat badan kurang",
+      "Normal",
+      "Obesitas",
+      "Berat badan lebih",
+      "Kurus"
     ],
     answer: 1,
   },
   {
-    id: 2,
-    question: "Seorang bayi baru lahir menunjukkan tonus lemah, menangis lemah, dan nadi 80/min. Langkah pertama resusitasi neonatal adalah?",
-    options: [
-      "Memberikan kompresi jantung",
-      "Memberikan ventilasi bag-mask",
-      "Menilai jalan napas dan stimulasi",
-      "Memberikan obat-obatan intravena"
-    ],
-    answer: 2,
-  },
-  {
     id: 3,
-    question: "Indikasi operasi sesar segera antara lain kecuali:",
+    question: "Perempuan (28 tahun, G1P0A0, hamil 35 minggu) datang ke Puskesmas dengan keluhan pusing. TD 160/110 mmHg, protein urin (+++). Apa tindakan yang paling tepat?",
     options: [
-      "Distosia bahu",
-      "Placenta previa total",
-      "Persalinan normal tanpa komplikasi",
-      "Fetal distress"
+      "Rujuk ke RS",
+      "Kolaborasi dokter untuk terapi",
+      "Berikan terapi Nifedipin",
+      "Berikan terapi Captopril",
+      "KIE kondisi ibu"
     ],
-    answer: 2,
+    answer: 0,
   },
   {
     id: 4,
-    question: "Seorang ibu postpartum mengalami perdarahan lebih dari 500 mL. Tindakan prioritas?",
+    question: "Bayi perempuan, umur 2 bulan, mengalami diare sejak kemarin dan diberi susu formula sejak seminggu yang lalu. Apa pendidikan kesehatan yang tepat?",
     options: [
-      "Memasukkan kateter urin",
-      "Mengevaluasi kontraksi rahim dan melakukan masase fundus",
-      "Memberikan analgesik",
-      "Memberikan vitamin tambahan"
+      "Imunisasi",
+      "ASI eksklusif",
+      "Penyakit anak",
+      "Tumbuh kembang",
+      "Makanan seimbang"
     ],
     answer: 1,
   },
   {
     id: 5,
-    question: "Manakah tanda bahaya pada ibu nifas yang harus segera ditangani?",
+    question: "Perempuan (25 tahun, P1A0) nifas hari pertama dengan keluhan ASI belum lancar. Ibu cemas, ASI sedikit menetes. Hormon apa yang berperan?",
     options: [
-      "Perdarahan pervaginam berat",
-      "Nyeri perut ringan",
-      "Demam ringan 37,5°C",
-      "Payudara terasa penuh"
+      "Estrogen",
+      "Progesteron",
+      "Prolaktin",
+      "Follicle Stimulating Hormone",
+      "Gonadotropin Releasing Hormone"
     ],
-    answer: 0,
+    answer: 2,
   },
   {
     id: 6,
-    question: "Penatalaksanaan preeklamsia ringan termasuk:",
+    question: "Bayi perempuan lahir 1 jam lalu dan sudah berhasil melakukan IMD. Bayi sehat namun bidan mengedukasi pentingnya menjaga kehangatan. Apa penyebab bayi bisa kehilangan panas tubuh?",
     options: [
-      "Rawat inap dan pengawasan ketat",
-      "Persalinan sesar segera",
-      "Konsumsi suplemen kalsium dan kontrol rutin",
-      "Memberikan oksitosin"
+      "Terdapat aliran udara dari kipas angin",
+      "Adanya AC/Kipas angin menyala di kamar",
+      "Bayi diletakkan di atas meja yang dingin tanpa alas",
+      "Bayi ditempatkan di dalam ruangan dingin",
+      "Bayi terlalu cepat dimandikan dan tidak segera diselimuti"
     ],
     answer: 2,
   },
   {
     id: 7,
-    question: "Apa yang dimaksud dengan Distosia Bahu?",
+    question: "Bidan membantu persalinan di RB. Setelah oksitosin IM dan bayi lahir, plasenta belum lepas, perdarahan ±300cc. Apa implementasi yang tepat?",
     options: [
-      "Persalinan normal dengan kepala janin terlebih dahulu",
-      "Kesulitan lahir karena bahu janin tersangkut",
-      "Posisi janin sungsang",
-      "Persalinan prematur"
+      "Melakukan rujukan",
+      "Melakukan manual plasenta",
+      "Melakukan masase pada uterus",
+      "Melakukan pengecekan kelengkapan plasenta",
+      "Memberikan uterotonika (oksitosin) yang kedua"
     ],
     answer: 1,
   },
   {
     id: 8,
-    question: "Tanda awal infeksi postpartum meliputi:",
+    question: "Bidan membantu persalinan di RB. Sudah diberikan oksitosin dan dilakukan peregangan tali pusat, tetapi masih terjadi perdarahan ±200cc. Apa tindakan yang tepat?",
     options: [
-      "Perdarahan hebat",
-      "Demam >38°C dan nyeri perut",
-      "Hiperaktivitas bayi",
-      "Nyeri kepala ringan"
+      "Melakukan rujukan",
+      "Melakukan manual plasenta",
+      "Melakukan masase pada uterus",
+      "Melakukan pengecekan kelengkapan plasenta",
+      "Memberikan uterotonika (oksitosin) yang kedua"
     ],
-    answer: 1,
+    answer: 4,
   },
   {
     id: 9,
-    question: "Kapan pemberian vitamin K pada neonatus dilakukan?",
+    question: "Perempuan (36 tahun, G4P3A0, hamil 34 minggu) datang ke TPMB dengan perdarahan pervaginam. Bidan memutuskan rujuk. Apa peran bidan dalam kasus ini?",
     options: [
-      "Setelah bayi minum ASI pertama",
-      "Segera setelah lahir",
-      "Setelah 1 minggu",
-      "Setelah imunisasi pertama"
+      "Pelaksana",
+      "Pengelola",
+      "Pendidik",
+      "Peneliti",
+      "Pemimpin"
     ],
-    answer: 1,
+    answer: 0,
   },
   {
     id: 10,
-    question: "Manakah yang termasuk indikator risiko tinggi persalinan preterm?",
+    question: "Perempuan (32 tahun, G1P0A0, hamil 29 minggu) datang dengan perdarahan merah segar tanpa nyeri. TFU 23 cm, letak lintang. Apa diagnosis yang mungkin?",
     options: [
-      "Kehamilan pertama tanpa riwayat penyakit",
-      "Riwayat persalinan prematur sebelumnya",
-      "Usia ibu >25 tahun tanpa komplikasi",
-      "BMI normal sebelum hamil"
+      "Solusio plasenta",
+      "Plasenta Previa",
+      "Rupture uteri",
+      "Abortus imminens",
+      "Abortus in complete"
     ],
     answer: 1,
   },
