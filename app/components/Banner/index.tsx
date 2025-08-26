@@ -108,6 +108,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 const Banner = () => {
   const teamMembers = [
@@ -198,7 +199,20 @@ const Banner = () => {
                 </div>
               ))}
             </div>
-          </div>
+            
+  {/* 👉 CTA Button di sini */}
+  <div className="flex justify-center lg:justify-start mt-4">
+    <Link
+      href="/cbt"
+      className="px-4 py-2 rounded-lg bg-ultramarine text-white font-medium shadow hover:bg-midnightblue transition text-sm"
+    >
+      🎯 Coba Mini CBT Gratis
+    </Link>
+  </div>
+</div>
+       
+
+          
 
           {/* RIGHT – TIM UKOM */}
           <div className="col-span-12 lg:col-span-6 flex flex-col items-center lg:items-end justify-center">
