@@ -159,29 +159,17 @@
 // };
 
 // export default BimbelPrev;
+"use client";
+import React, { useEffect, useState } from "react";
 
-import React from "react";
-
-const bimbelPrograms = [
-  {
-    code: "UKOM_BIDAN",
-    name: "Bimbel Persiapan UKOM Bidan",
-    category: "Kesehatan",
-    participants: "6,800+",
-    image: "assets/major/Bidan.png",
-    description:
-      "Program intensif persiapan Uji Kompetensi Bidan dengan materi lengkap, latihan soal, dan simulasi berbasis SKL terbaru.",
-  },
-  {
-    code: "UKOM_PERAWAT",
-    name: "Bimbel Persiapan UKOM Perawat",
-    category: "Kesehatan",
-    participants: "9,200+",
-    image: "assets/major/Perawat.png",
-    description:
-      "Kelas persiapan Uji Kompetensi Perawat dengan pendalaman materi, bank soal UKOM, serta tryout untuk meningkatkan kelulusan.",
-  },
-];
+type BimbelProgram = {
+  code: string;
+  name: string;
+  category: string;
+  participants: string;
+  image: string;
+  description: string;
+};
 
 const alumni = [
   {
@@ -214,8 +202,40 @@ const alumni = [
 ];
 
 const BimbelPrev: React.FC = () => {
+  const [programs, setPrograms] = useState<BimbelProgram[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        // Ambil token dari localStorage jika ada, fallback ke .env
+        const token = typeof window !== 'undefined' ? localStorage.getItem('token') : process.env.NEXT_PUBLIC_API_TOKEN;
+        const res = await fetch("http://127.0.0.1:8000/api/public/bimbel-programs", {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          const errorText = await res.text();
+          console.error("Failed to fetch:", errorText);
+          throw new Error("Failed to fetch");
+        }
+
+  const data = await res.json();
+  setPrograms(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error fetch bimbel programs:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
   return (
-    // <section className="py-2 bg-gray-50 mt-0">
     <section className="py-2 bg-blue-50 mt-0">
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -230,48 +250,51 @@ const BimbelPrev: React.FC = () => {
         </div>
 
         {/* Grid Program */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-          {bimbelPrograms.map((program) => (
-            <div
-              key={program.code}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
-            >
-              {/* Image only */}
-              <div className="w-full aspect-[4/3] overflow-hidden">
-                <img
-                  src={program.image}
-                  alt={program.name}
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              {/* Buttons + Category */}
-              <div className="flex items-center justify-between p-4">
-                {/* Kiri = Tombol + Category sejajar */}
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://wa.me/6281295012668"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
-                  >
-                    Hubungi Sekarang
-                  </a>
-                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                    {program.category}
-                  </span>
+        {loading ? (
+          <p className="text-center text-gray-500">Loading program...</p>
+        ) : programs.length === 0 ? (
+          <p className="text-center text-gray-500">Belum ada program tersedia</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+            {programs.map((program) => (
+              <div
+                key={program.code}
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              >
+                {/* Image only */}
+                <div className="w-full aspect-[4/3] overflow-hidden">
+                  <img
+                    src={program.image.startsWith('http') ? program.image : `http://localhost:8000/storage/${program.image}`}
+                    alt={program.name}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-
-                {/* Kanan = Lihat Detail */}
-                <a
-                  href="/bimbel"
-                  className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
-                >
-                  Lihat Detail →
-                </a>
+                {/* Buttons + Category */}
+                <div className="flex items-center justify-between p-4">
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://wa.me/6281295012668"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
+                    >
+                      Hubungi Sekarang
+                    </a>
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                      {program.category}
+                    </span>
+                  </div>
+                  <a
+                    href="/bimbel"
+                    className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
+                  >
+                    Lihat Detail →
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Alumni Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-4">
