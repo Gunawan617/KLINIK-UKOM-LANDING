@@ -25,7 +25,7 @@ export default function BookCard({ book, searchQuery = "", onDetail, onBuy }: Bo
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col">
       <img
-        src={book.coverImage}
+        src={book.cover_image}
         alt={book.title}
         className="h-56 w-full object-cover"
       />

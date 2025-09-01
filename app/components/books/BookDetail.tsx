@@ -12,7 +12,7 @@ export default function BookDetail({ book, onBack, onBuy }: BookDetailProps) {
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
       <img
-        src={book.coverImage}
+        src={book.cover_image}
         alt={book.title}
         className="h-72 w-full object-cover"
       />

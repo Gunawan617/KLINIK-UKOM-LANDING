@@ -98,6 +98,7 @@
 // export default TryoutPrev;
 "use client";
 import React, { useEffect, useState } from "react";
+import { API_CONFIG, getApiUrl } from "../../../lib/api-config";
 
 interface TryoutProgram {
   id: number;
@@ -123,7 +124,7 @@ const TryoutPrev: React.FC = () => {
     
     // Jika path dimulai dengan 'storage/', tambahkan base URL
     if (imagePath.startsWith('storage/')) {
-      return `http://127.0.0.1:8000/${imagePath}`;
+      return `${API_CONFIG.BASE_URL}/${imagePath}`;
     }
     
     // Fallback
@@ -131,7 +132,7 @@ const TryoutPrev: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/public/tryout-programs")
+    fetch(getApiUrl(API_CONFIG.ENDPOINTS.TRYOUT_PROGRAMS))
       .then((res) => {
         if (!res.ok) throw new Error("Gagal fetch");
         return res.json();
@@ -152,7 +153,7 @@ const TryoutPrev: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-2 bg-blue-50 mt-0">
+    <section id="tryoutprev" className="py-2 bg-blue-50 mt-0">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-4">

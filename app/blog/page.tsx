@@ -1,9 +1,10 @@
 import HomeClient from "./HomeClient";
 import Link from "next/link";
+import { API_CONFIG, getApiUrl } from "../../lib/api-config";
 
 // Ambil artikel per halaman
 async function getPosts(page: number = 1) {
-  const res = await fetch(`http://localhost:8000/api/public/posts?page=${page}`, {
+  const res = await fetch(`${getApiUrl(API_CONFIG.ENDPOINTS.POSTS)}?page=${page}`, {
     cache: "no-store",
     headers: { Accept: "application/json" },
   });

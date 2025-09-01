@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 
+
 /* ================= Icons (SVG) ================= */
 const Play = ({ className = "" }) => (
   <svg
@@ -119,22 +120,6 @@ const WA_NUMBER = "6281295012668"; // TODO: ganti dengan nomor admin kamu
 
 // Fetch bimbel programs from API
 import { useEffect } from "react";
-const [bimbelPrograms, setBimbelPrograms] = useState<any[]>([]);
-const [loadingBimbel, setLoadingBimbel] = useState(true);
-const [errorBimbel, setErrorBimbel] = useState(false);
-useEffect(() => {
-  setLoadingBimbel(true);
-  fetch("http://127.0.0.1:8000/api/public/bimbel-programs")
-    .then((res) => res.json())
-    .then((data) => {
-      setBimbelPrograms(Array.isArray(data) ? data : []);
-      setLoadingBimbel(false);
-    })
-    .catch(() => {
-      setErrorBimbel(true);
-      setLoadingBimbel(false);
-    });
-}, []);
 
 const packages = [
   {
@@ -192,22 +177,7 @@ const packages = [
 ];
 
 // Fetch tryout programs from API
-const [tryoutPrograms, setTryoutPrograms] = useState<any[]>([]);
-const [loadingTryout, setLoadingTryout] = useState(true);
-const [errorTryout, setErrorTryout] = useState(false);
-useEffect(() => {
-  setLoadingTryout(true);
-  fetch("http://127.0.0.1:8000/api/public/tryout-programs")
-    .then((res) => res.json())
-    .then((data) => {
-      setTryoutPrograms(Array.isArray(data) ? data : []);
-      setLoadingTryout(false);
-    })
-    .catch(() => {
-      setErrorTryout(true);
-      setLoadingTryout(false);
-    });
-}, []);
+// (moved to inside BimbelPage)
 
 const alumni = [
   {
@@ -243,14 +213,84 @@ const alumni = [
 const buildWaLink = (text: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
-/* =============== Page =============== */
+import { API_CONFIG, getApiUrl } from '../../lib/api-config';
 export default function BimbelPage() {
+  // State for tryout programs
+  const [tryoutPrograms, setTryoutPrograms] = useState<any[]>([]);
+  const [loadingTryout, setLoadingTryout] = useState(true);
+  const [errorTryout, setErrorTryout] = useState(false);
+
+  // State and effect for bimbel programs
+  const [bimbelPrograms, setBimbelPrograms] = useState<any[]>([]);
+  const [loadingBimbel, setLoadingBimbel] = useState(true);
+  const [errorBimbel, setErrorBimbel] = useState(false);
+  // Helper function untuk mendapatkan URL gambar
+  const getImageUrl = (imagePath?: string) => {
+    if (!imagePath) return "/assets/placeholder.svg";
+    if (imagePath.startsWith('http')) return imagePath;
+
+    // Handle different path formats
+    if (imagePath.startsWith('uploads/')) {
+      return `${API_CONFIG.BASE_URL}/storage/${imagePath}`;
+    }
+    if (imagePath.startsWith('storage/')) {
+      return `${API_CONFIG.BASE_URL}/${imagePath}`;
+    }
+    if (imagePath.startsWith('assets/')) {
+      return `/${imagePath}`;
+    }
+
+    return "/assets/placeholder.svg";
+  };
+
+  useEffect(() => {
+    setLoadingBimbel(true);
+    fetch(getApiUrl(API_CONFIG.ENDPOINTS.BIMBEL_PROGRAMS))
+      .then((res) => res.json())
+      .then((data) => {
+        // Transform data untuk handle path gambar
+        const transformedPrograms = (Array.isArray(data) ? data : []).map((program: any) => ({
+          ...program,
+          image: getImageUrl(program.image)
+        }));
+        setBimbelPrograms(transformedPrograms);
+        setLoadingBimbel(false);
+      })
+      .catch(() => {
+        setErrorBimbel(true);
+        setLoadingBimbel(false);
+      });
+  }, []);
+
+  // Fetch tryout programs from API
+  useEffect(() => {
+    setLoadingTryout(true);
+    fetch(getApiUrl(API_CONFIG.ENDPOINTS.TRYOUT_PROGRAMS))
+      .then((res) => res.json())
+      .then((data) => {
+        // Handle nested data structure
+        const programsData = data.data || data;
+        // Transform data untuk handle path gambar dan participants
+        const transformedPrograms = (Array.isArray(programsData) ? programsData : []).map((program: any) => ({
+          ...program,
+          image: getImageUrl(program.image),
+          participants: parseInt(program.participants) || 0
+        }));
+        setTryoutPrograms(transformedPrograms);
+        setLoadingTryout(false);
+      })
+      .catch(() => {
+        setErrorTryout(true);
+        setLoadingTryout(false);
+      });
+  }, []);
+
   const [selectedProgram, setSelectedProgram] = useState<string>(""); // BIDAN | PERAWAT
   const [selectedPackage, setSelectedPackage] = useState<string>("");
 
   const selectedProgramObj = useMemo(
     () => bimbelPrograms.find((p) => p.code === selectedProgram),
-    [selectedProgram],
+    [selectedProgram, bimbelPrograms],
   );
   const selectedPackageObj = useMemo(
     () => packages.find((p) => p.id === selectedPackage),
@@ -270,7 +310,7 @@ export default function BimbelPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* ===== Hero Section ===== */}
-      <section className="bg-gray-50 pt-16 pb-20">
+  <section id="bimbel" className="bg-gray-50 pt-16 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left */}
@@ -401,11 +441,17 @@ export default function BimbelPage() {
                   onClick={() => setSelectedProgram(program.code)}
                 >
                   {/* Banner Image */}
-                  <img
-                    src={program.image}
-                    alt={program.name}
-                    className="w-full h-56 md:h-72 object-cover"
-                  />
+                  <div className="w-full h-56 md:h-72 overflow-hidden">
+                    <img
+                      src={getImageUrl(program.image)}
+                      alt={program.name}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = "/assets/placeholder.svg";
+                      }}
+                    />
+                  </div>
 
                   {/* Status Dipilih */}
                   {selectedProgram === program.code && (
@@ -588,7 +634,8 @@ export default function BimbelPage() {
         </div>
       // </section> */}
 
-      <section className="py-2 bg-blue-50 mt-0">
+      {/* ===== Tryout Section (Static, like PrevBimbel) ===== */}
+  <section id="tryout" className="py-2 bg-blue-50 mt-0">
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-4">
@@ -596,19 +643,42 @@ export default function BimbelPage() {
               Tryout UKOM Online Terpercaya
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang
-              akurat dan sesuai standar nasional
+              Uji kesiapanmu menghadapi UKOM dengan soal-soal simulasi yang akurat
+              dan sesuai standar nasional
             </p>
           </div>
 
           {/* Grid Program */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
             {loadingTryout ? (
-              <p className="text-center text-gray-500 col-span-2">Loading tryout...</p>
+              <div className="col-span-2 text-center py-8">
+                <div className="inline-flex items-center gap-2 text-gray-500">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                  <span>Memuat program tryout...</span>
+                </div>
+              </div>
             ) : errorTryout ? (
-              <p className="text-center text-red-500 col-span-2">Gagal memuat data tryout.</p>
+              <div className="col-span-2 text-center py-8">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
+                  <div className="text-red-600 mb-2">
+                    <span className="text-2xl">⚠️</span>
+                  </div>
+                  <h3 className="text-red-800 font-semibold mb-2">Gagal Memuat Data Tryout</h3>
+                  <p className="text-red-600 text-sm mb-4">
+                    Tidak dapat terhubung ke server. Silakan periksa koneksi internet.
+                  </p>
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  >
+                    🔄 Coba Lagi
+                  </button>
+                </div>
+              </div>
             ) : tryoutPrograms.length === 0 ? (
-              <p className="text-center text-gray-500 col-span-2">Belum ada tryout tersedia.</p>
+              <div className="col-span-2 text-center py-8">
+                <p className="text-gray-500">Belum ada program tryout tersedia.</p>
+              </div>
             ) : (
               tryoutPrograms.map((program) => (
                 <div
@@ -618,7 +688,7 @@ export default function BimbelPage() {
                   {/* Image only */}
                   <div className="w-full aspect-[4/3] overflow-hidden">
                     <img
-                      src={program.image}
+                      src={getImageUrl(program.image)}
                       alt={program.name}
                       className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                     />
@@ -657,9 +727,7 @@ export default function BimbelPage() {
           {/* Button */}
           <div className="text-center">
             <a
-              href="https://wa.me/6281295012668?text=Halo%20saya%20ingin%20ikut%20tryout"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/tryout"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-400 hover:bg-blue-500 transition-colors"
             >
               Ikuti Tryout Sekarang

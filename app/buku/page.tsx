@@ -2,6 +2,7 @@
 import React, { useState, useMemo, useEffect } from "react"
 import BookCard from "../components/books/BookCard"
 import BookDetail from "../components/books/BookDetail"
+import { API_CONFIG, getApiUrl, getImageUrl } from "../../lib/api-config"
 // import { Book } from "../components/books/types"
 
 export default function BukuPage() {
@@ -12,21 +13,7 @@ export default function BukuPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  // Helper function untuk mendapatkan URL gambar
-  const getImageUrl = (imagePath?: string) => {
-    if (!imagePath) return "/assets/placeholder.svg";
-    if (imagePath.startsWith('http')) return imagePath;
-    if (imagePath.startsWith('storage/')) {
-      return `http://127.0.0.1:8000/${imagePath}`;
-    }
-    if (imagePath.startsWith('books/')) {
-      return `http://127.0.0.1:8000/storage/${imagePath}`;
-    }
-    if (imagePath.startsWith('assets/')) {
-      return `/${imagePath}`;
-    }
-    return "/assets/placeholder.svg";
-  };
+
 
   // Fetch books dari API
   useEffect(() => {
@@ -36,7 +23,7 @@ export default function BukuPage() {
         setError(false);
 
         console.log("🔄 Fetching books from API...");
-        const response = await fetch("http://127.0.0.1:8000/api/public/books", {
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.BOOKS), {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -185,7 +172,7 @@ export default function BukuPage() {
                       key={book.id}
                       book={{
                         ...book,
-                        coverImage: getImageUrl(book.cover_image)
+                        cover_image: getImageUrl(book.cover_image)
                       }}
                       searchQuery={searchQuery}
                       onDetail={setSelectedBook}
@@ -200,7 +187,7 @@ export default function BukuPage() {
           <BookDetail
             book={{
               ...selectedBook,
-              coverImage: getImageUrl(selectedBook.cover_image)
+              cover_image: getImageUrl(selectedBook.cover_image)
             }}
             onBack={() => setSelectedBook(null)}
             onBuy={handleBuy}

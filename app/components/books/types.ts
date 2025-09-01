@@ -6,5 +6,5 @@ export interface Book {
   excerpt: string
   description: string
   price: string
-  coverImage: string
+  cover_image?: string
 }

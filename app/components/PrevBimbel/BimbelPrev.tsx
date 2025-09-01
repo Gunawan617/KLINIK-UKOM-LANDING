@@ -161,6 +161,7 @@
 // export default BimbelPrev;
 "use client";
 import React, { useEffect, useState } from "react";
+import { API_CONFIG, getApiUrl } from "../../../lib/api-config";
 
 type BimbelProgram = {
   code: string;
@@ -210,7 +211,7 @@ const BimbelPrev: React.FC = () => {
       try {
         // Ambil token dari localStorage jika ada, fallback ke .env
         const token = typeof window !== 'undefined' ? localStorage.getItem('token') : process.env.NEXT_PUBLIC_API_TOKEN;
-        const res = await fetch("http://127.0.0.1:8000/api/public/bimbel-programs", {
+        const res = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.BIMBEL_PROGRAMS), {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${token}`,
@@ -236,7 +237,7 @@ const BimbelPrev: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-2 bg-blue-50 mt-0">
+    <section id="bimbelprev" className="py-2 bg-blue-50 mt-0">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-4">

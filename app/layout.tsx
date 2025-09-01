@@ -1,8 +1,10 @@
+
 import './globals.css';
 
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer';
 import { AnalyticsProvider } from './context/AnalyticsContext';
+import PageViewTracker from './components/PageViewTracker';
 
 
 export const metadata = {
@@ -19,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AnalyticsProvider>
+          <PageViewTracker />
           <Navbar />
           {children}
           <Footer />

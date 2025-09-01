@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { API_CONFIG, getApiUrl } from '../../../lib/api-config';
 // import PostAnalytics from '../[id]/ClientAnalytics'; // Uncomment if analytics is available
 
 // Ambil post dari API Laravel, cek success dan ambil data
 async function getPost(slug: string) {
-  const res = await fetch(`http://localhost:8000/api/public/posts/slug/${slug}`, {
+  const res = await fetch(`${getApiUrl(API_CONFIG.ENDPOINTS.POST_BY_SLUG)}/${slug}`, {
     cache: 'no-store',
     headers: { Accept: 'application/json' },
   });
@@ -73,20 +74,20 @@ export default async function PostDetail({ params }: { params: { slug: string } 
   }
 
   // Always show debug info in development
-  if (!post) {
-    // eslint-disable-next-line no-console
-    console.log('DEBUG (server):', { slug: params.slug, post, fetchError });
-    return (
-      <div className="max-w-3xl mx-auto py-10 px-4 sm:px-0 text-center text-red-600">
-        <h2 className="text-2xl font-bold mb-4">Data blog tidak ditemukan</h2>
-        <p>Pastikan API mengembalikan data yang benar dan slug post valid.</p>
-        <div className="bg-gray-100 text-left p-4 mt-6 rounded">
-          <strong>Debug info:</strong>
-          <pre>{JSON.stringify({ slug: params.slug, post, fetchError }, null, 2)}</pre>
-        </div>
-      </div>
-    );
-  }
+  // if (!post) {
+  //   // eslint-disable-next-line no-console
+  //   console.log('DEBUG (server):', { slug: params.slug, post, fetchError });
+  //   return (
+  //     <div className="max-w-3xl mx-auto py-10 px-4 sm:px-0 text-center text-red-600">
+  //       <h2 className="text-2xl font-bold mb-4">Data blog tidak ditemukan</h2>
+  //       <p>Pastikan API mengembalikan data yang benar dan slug post valid.</p>
+  //       <div className="bg-gray-100 text-left p-4 mt-6 rounded">
+  //         <strong>Debug info:</strong>
+  //         <pre>{JSON.stringify({ slug: params.slug, post, fetchError }, null, 2)}</pre>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   const author = post.author || 'Admin';
   const category = post.category || null;
@@ -138,12 +139,12 @@ export default async function PostDetail({ params }: { params: { slug: string } 
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
       */}
-      <div className="bg-gray-100 p-4 rounded mb-8">
+      {/* <div className="bg-gray-100 p-4 rounded mb-8">
         <strong>Debug content:</strong>
         <pre>{JSON.stringify(post, null, 2)}</pre>
         <strong>Debug fetchError:</strong>
         <pre>{JSON.stringify(fetchError, null, 2)}</pre>
-      </div>
+      </div> */}
 
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-6">
