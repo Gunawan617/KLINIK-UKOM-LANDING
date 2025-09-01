@@ -2,34 +2,29 @@
 import React, { useState, useMemo, useEffect } from "react"
 import BookCard from "../components/books/BookCard"
 import BookDetail from "../components/books/BookDetail"
-import { Book } from "../components/books/types"
+// import { Book } from "../components/books/types"
 
 export default function BukuPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
-  const [books, setBooks] = useState<Book[]>([])
+  const [selectedBook, setSelectedBook] = useState<any | null>(null)
+  const [books, setBooks] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   // Helper function untuk mendapatkan URL gambar
   const getImageUrl = (imagePath?: string) => {
     if (!imagePath) return "/assets/placeholder.svg";
-
-    // Jika path sudah full URL, gunakan langsung
     if (imagePath.startsWith('http')) return imagePath;
-
-    // Jika path dimulai dengan 'storage/', tambahkan base URL
     if (imagePath.startsWith('storage/')) {
       return `http://127.0.0.1:8000/${imagePath}`;
     }
-
-    // Jika path relatif, anggap dari assets
+    if (imagePath.startsWith('books/')) {
+      return `http://127.0.0.1:8000/storage/${imagePath}`;
+    }
     if (imagePath.startsWith('assets/')) {
       return `/${imagePath}`;
     }
-
-    // Fallback
     return "/assets/placeholder.svg";
   };
 
@@ -65,9 +60,11 @@ export default function BukuPage() {
         if (Array.isArray(data)) {
           console.log(`📚 Found ${data.length} books`);
           setBooks(data);
+          console.log("Books state after setBooks:", data);
         } else if (Array.isArray(data.data)) {
           console.log(`📚 Found ${data.data.length} books (nested)`);
           setBooks(data.data);
+          console.log("Books state after setBooks:", data.data);
         } else {
           console.error("❌ Unexpected data format:", data);
           throw new Error("Format API tidak sesuai - data bukan array");
@@ -86,9 +83,10 @@ export default function BukuPage() {
 
 
   const categories = ["all", ...new Set(books.map((b) => b.category))]
+  console.log("Books state:", books)
 
   const filteredBooks = useMemo(() => {
-    return books.filter((book) => {
+    const filtered = books.filter((book) => {
       const matchesSearch =
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -98,10 +96,12 @@ export default function BukuPage() {
       }
       return matchesSearch && book.category === selectedCategory;
     });
-  }, [searchQuery, selectedCategory]);
+    console.log("Filtered books:", filtered);
+    return filtered;
+  }, [books, searchQuery, selectedCategory]);
 
-  const handleBuy = (book: Book) => {
-    const whatsappNumber = "6281234567890"
+  const handleBuy = (book: any) => {
+    const whatsappNumber = "6281295012668"
     const message = `Halo, saya ingin membeli buku "${book.title}" seharga ${book.price}. Mohon informasi lebih lanjut.`
     const encoded = encodeURIComponent(message)
     const url = `https://wa.me/${whatsappNumber}?text=${encoded}`
@@ -174,18 +174,18 @@ export default function BukuPage() {
             </div>
 
             {/* Grid Buku Responsive */}
-            {!loading && !error && (
+            {!loading && !error && filteredBooks.length === 0 && (
+              <div className="text-center text-gray-500 py-8">Tidak ada buku ditemukan.</div>
+            )}
+            {!loading && !error && filteredBooks.length > 0 && (
               <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))" }}>
                 {filteredBooks.map((book) => {
-                  // Cari field gambar yang benar, support API snake_case
-                  const rawBook = book as any;
-                  const rawImage = book.coverImage || rawBook.cover_image || rawBook.image || undefined;
                   return (
                     <BookCard
                       key={book.id}
                       book={{
                         ...book,
-                        coverImage: getImageUrl(rawImage)
+                        coverImage: getImageUrl(book.cover_image)
                       }}
                       searchQuery={searchQuery}
                       onDetail={setSelectedBook}
@@ -200,7 +200,7 @@ export default function BukuPage() {
           <BookDetail
             book={{
               ...selectedBook,
-              coverImage: getImageUrl(selectedBook.coverImage)
+              coverImage: getImageUrl(selectedBook.cover_image)
             }}
             onBack={() => setSelectedBook(null)}
             onBuy={handleBuy}

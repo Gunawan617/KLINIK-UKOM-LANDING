@@ -107,43 +107,64 @@
 // export default Banner;
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const Banner = () => {
-  const teamMembers = [
-    { name: "Kak Awan", src: "/assets/banner/Foto Baru Kak Awan.png" },
-    { name: "Kak Bian", src: "/assets/banner/Foto Baru Kak Bian.png" },
-    { name: "Kak Naufal", src: "/assets/banner/Foto Baru Kak Naufal.png" },
-    { name: "Kak Daffa", src: "/assets/banner/Foto Baru Kak Daffa.png" },
-    { name: "Kak Rezz", src: "/assets/banner/Foto Baru Kak Rez.png" },
-    { name: "Kak Atta", src: "/assets/banner/Foto Baru Kak Atta.png" },
-  ];
-
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
 
+  // 🔹 Ambil data dari API Laravel
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/api/public/team-members", {
+          cache: "no-store",
+        });
+        const data = await res.json();
+
+        // Tambah base URL biar Next.js bisa load gambar
+        const fixedData = data.map((m: any) => ({
+          ...m,
+          src: `http://localhost:8000/storage/${m.src}`,
+        }));
+
+        setTeamMembers(fixedData);
+      } catch (error) {
+        console.error("Gagal fetch team members:", error);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
+  // 🔹 Auto Scroll Carousel tanpa duplikat
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
     let scrollAmount = 0;
     const scrollSpeed = 1;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
 
     const autoScroll = () => {
+      if (!carousel) return;
+
       scrollAmount += scrollSpeed;
-      if (scrollAmount >= maxScroll) {
+
+      // kalau sudah sampai ujung kanan, reset scroll ke awal
+      if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
         scrollAmount = 0;
       }
+
       carousel.scrollLeft = scrollAmount;
     };
 
-    let intervalId = setInterval(autoScroll, 50);
+    let intervalId = setInterval(autoScroll, 30);
 
     const handleMouseEnter = () => clearInterval(intervalId);
     const handleMouseLeave = () => {
       clearInterval(intervalId);
-      intervalId = setInterval(autoScroll, 50);
+      intervalId = setInterval(autoScroll, 30);
     };
 
     carousel.addEventListener("mouseenter", handleMouseEnter);
@@ -151,12 +172,10 @@ const Banner = () => {
 
     return () => {
       clearInterval(intervalId);
-      if (carousel) {
-        carousel.removeEventListener("mouseenter", handleMouseEnter);
-        carousel.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      carousel.removeEventListener("mouseenter", handleMouseEnter);
+      carousel.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [teamMembers]);
 
   return (
     <section
@@ -166,52 +185,59 @@ const Banner = () => {
       <div className="mx-auto max-w-7xl w-full px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-12">
           {/* LEFT CONTENT */}
-          <div className="col-span-12 lg:col-span-6 flex flex-col gap-y-8">
-            <h1 className="text-midnightblue text-3xl sm:text-4xl lg:text-5xl font-semibold text-center lg:text-start leading-tight">
-              Bimbel UKOM Terbaik di Indonesia
+          <div className="col-span-12 lg:col-span-6 flex flex-col gap-y-6">
+            <h1 className="text-midnightblue text-3xl sm:text-4xl lg:text-5xl font-semibold text-center lg:text-left leading-tight">
+              Temani perjalananmu menuju kompeten 1x ujian
             </h1>
 
-            <h3 className="text-charcoal text-base sm:text-lg font-normal text-center lg:text-start opacity-75">
-            Temani perjalananmu Menuju Kompeten 1x Ujian
+            <h3 className="text-charcoal text-base sm:text-lg font-normal text-center lg:text-left opacity-75">
+              Bimbingan pasti, hasil kompeten
             </h3>
 
             <div className="bg-white/60 border border-slate-300 rounded-lg p-4 text-sm text-charcoal shadow-sm">
-              Selamat datang di <strong>Bimbel UKOM!</strong> Kami percaya
+              Selamat datang di <strong>Klinik UKOM!</strong> Kami percaya
               setiap calon tenaga kesehatan memiliki potensi besar untuk sukses.
               Dengan bimbingan mentor berpengalaman dan metode pembelajaran yang
               terstruktur, mari kita wujudkan bersama kelulusan impian Anda.
             </div>
 
+            {/* Features */}
             <div className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start">
-              {["Flexible", "Learning path", "Community"].map((feature, idx) => (
-                <div key={idx} className="flex gap-2 items-center">
-                  <Image
-                    src="/assets/banner/check-circle.svg"
-                    alt="check-icon"
-                    width={24}
-                    height={24}
-                    className="shrink-0"
-                  />
-                  <p className="text-sm sm:text-lg font-normal text-black">
-                    {feature}
-                  </p>
-                </div>
-              ))}
+              {["Flexible", "Learning path", "Community"].map(
+                (feature, idx) => (
+                  <div key={idx} className="flex gap-2 items-center">
+                    <Image
+                      src="/assets/banner/check-circle.svg"
+                      alt="check-icon"
+                      width={24}
+                      height={24}
+                      className="shrink-0"
+                    />
+                    <p className="text-sm sm:text-lg font-normal text-black">
+                      {feature}
+                    </p>
+                  </div>
+                ),
+              )}
             </div>
-            
-  {/* 👉 CTA Button di sini */}
-  <div className="flex justify-center lg:justify-start mt-4">
-    <Link
-      href="/cbt"
-      className="px-4 py-2 rounded-lg bg-ultramarine text-white font-medium shadow hover:bg-midnightblue transition text-sm"
-    >
-      🎯 Coba Mini CBT Gratis
-    </Link>
-  </div>
-</div>
-       
 
-          
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+              <Link
+                href="https://wa.me/6281234567890?text=Halo%20Klinik%20UKOM,%20saya%20mau%20konsultasi%20bimbingan%20UKOM"
+                target="_blank"
+                className="px-6 py-3 rounded-lg bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition text-center"
+              >
+                💬 Konsultasi Gratis di WhatsApp
+              </Link>
+              <Link
+                href="/cbt"
+                className="px-6 py-3 rounded-lg bg-ultramarine text-white font-semibold shadow hover:bg-midnightblue transition text-center"
+              >
+                🎯 Coba Mini CBT Gratis
+              </Link>
+            </div>
+          </div>
 
           {/* RIGHT – TIM UKOM */}
           <div className="col-span-12 lg:col-span-6 flex flex-col items-center lg:items-end justify-center">
@@ -232,17 +258,17 @@ const Banner = () => {
                     msOverflowStyle: "none",
                   }}
                 >
-                  {[...teamMembers, ...teamMembers].map((m, index) => (
+                  {teamMembers.map((m, index) => (
                     <div
                       key={`${m.name}-${index}`}
                       className="group flex flex-col items-center hover:cursor-pointer transition-all duration-300 flex-shrink-0"
-                      style={{ minWidth: "200px" }}
+                      style={{ minWidth: "240px" }}
                     >
                       <div
                         className="relative flex items-center justify-center rounded-xl overflow-hidden bg-white ring-1 ring-slate-200 shadow-md group-hover:shadow-ultramarine/40 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300"
                         style={{
                           padding: 0,
-                          maxWidth: 200,
+                          maxWidth: 240,
                           width: "100%",
                           margin: "0 auto",
                           background: "white",
@@ -251,18 +277,18 @@ const Banner = () => {
                         <Image
                           src={m.src}
                           alt={m.name}
-                          width={160}
-                          height={210}
+                          width={200}
+                          height={280}
                           className="object-contain"
                           style={{
                             width: "100%",
                             height: "auto",
-                            maxHeight: 220,
+                            maxHeight: 300,
                           }}
-                          sizes="160px"
+                          sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 240px"
                         />
                       </div>
-                      <span className="mt-3 text-sm sm:text-base font-medium text-midnightblue group-hover:text-ultramarine transition text-center w-full">
+                      <span className="mt-3 text-base sm:text-lg font-medium text-midnightblue group-hover:text-ultramarine transition text-center w-full">
                         {m.name}
                       </span>
                     </div>

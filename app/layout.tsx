@@ -1,6 +1,8 @@
 import './globals.css';
+
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer';
+import { AnalyticsProvider } from './context/AnalyticsContext';
 
 
 export const metadata = {
@@ -16,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Footer />
+        <AnalyticsProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </AnalyticsProvider>
       </body>
     </html>
   )

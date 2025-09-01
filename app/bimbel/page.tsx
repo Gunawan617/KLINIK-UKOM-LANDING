@@ -117,26 +117,24 @@ const WhatsAppIcon = ({ className = "" }) => (
 /* =============== Data =============== */
 const WA_NUMBER = "6281295012668"; // TODO: ganti dengan nomor admin kamu
 
-const bimbelPrograms = [
-  {
-    code: "BIDAN",
-    name: "Bimbel Bidan",
-    category: "Kesehatan",
-    participants: "6,800+",
-    image: "assets/major/Bidan.png",
-    description:
-      "Fokus pada kompetensi kebidanan: asuhan kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
-  },
-  {
-    code: "PERAWAT",
-    name: "Bimbel Perawat",
-    category: "Kesehatan",
-    participants: "9,200+",
-    image: "assets/major/Perawat.png",
-    description:
-      "Pendalaman keperawatan medikal-bedah, keperawatan gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
-  },
-];
+// Fetch bimbel programs from API
+import { useEffect } from "react";
+const [bimbelPrograms, setBimbelPrograms] = useState<any[]>([]);
+const [loadingBimbel, setLoadingBimbel] = useState(true);
+const [errorBimbel, setErrorBimbel] = useState(false);
+useEffect(() => {
+  setLoadingBimbel(true);
+  fetch("http://127.0.0.1:8000/api/public/bimbel-programs")
+    .then((res) => res.json())
+    .then((data) => {
+      setBimbelPrograms(Array.isArray(data) ? data : []);
+      setLoadingBimbel(false);
+    })
+    .catch(() => {
+      setErrorBimbel(true);
+      setLoadingBimbel(false);
+    });
+}, []);
 
 const packages = [
   {
@@ -193,26 +191,23 @@ const packages = [
   },
 ];
 
-const tryoutPrograms = [
-  {
-    code: "BIDAN",
-    name: "Tryout Bidan",
-    category: "Kesehatan",
-    participants: "6,800+",
-    image: "assets/tryout/Banner TO Bidan.png",
-    description:
-      "Simulasi soal UKOM kebidanan sesuai kompetensi: kehamilan, persalinan, nifas, neonatus, KB, dan gawat darurat maternal-neonatal.",
-  },
-  {
-    code: "PERAWAT",
-    name: "Tryout Perawat",
-    category: "Kesehatan",
-    participants: "9,200+",
-    image: "assets/tryout/Banner TO Prwt.png",
-    description:
-      "Latihan soal UKOM keperawatan: medikal-bedah, gawat darurat, maternitas, anak, komunitas, dan manajemen keperawatan.",
-  },
-];
+// Fetch tryout programs from API
+const [tryoutPrograms, setTryoutPrograms] = useState<any[]>([]);
+const [loadingTryout, setLoadingTryout] = useState(true);
+const [errorTryout, setErrorTryout] = useState(false);
+useEffect(() => {
+  setLoadingTryout(true);
+  fetch("http://127.0.0.1:8000/api/public/tryout-programs")
+    .then((res) => res.json())
+    .then((data) => {
+      setTryoutPrograms(Array.isArray(data) ? data : []);
+      setLoadingTryout(false);
+    })
+    .catch(() => {
+      setErrorTryout(true);
+      setLoadingTryout(false);
+    });
+}, []);
 
 const alumni = [
   {
@@ -388,40 +383,48 @@ export default function BimbelPage() {
 
           {/* Grid Banner */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {bimbelPrograms.map((program) => (
-              <div
-                key={program.code}
-                className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-2 ${
-                  selectedProgram === program.code
-                    ? "border-blue-500"
-                    : "border-gray-200 hover:border-gray-300"
-                }`}
-                onClick={() => setSelectedProgram(program.code)}
-              >
-                {/* Banner Image */}
-                <img
-                  src={program.image}
-                  alt={program.name}
-                  className="w-full h-56 md:h-72 object-cover"
-                />
+            {loadingBimbel ? (
+              <p className="text-center text-gray-500 col-span-2">Loading program...</p>
+            ) : errorBimbel ? (
+              <p className="text-center text-red-500 col-span-2">Gagal memuat data program.</p>
+            ) : bimbelPrograms.length === 0 ? (
+              <p className="text-center text-gray-500 col-span-2">Belum ada program tersedia.</p>
+            ) : (
+              bimbelPrograms.map((program) => (
+                <div
+                  key={program.code}
+                  className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-2 ${
+                    selectedProgram === program.code
+                      ? "border-blue-500"
+                      : "border-gray-200 hover:border-gray-300"
+                  }`}
+                  onClick={() => setSelectedProgram(program.code)}
+                >
+                  {/* Banner Image */}
+                  <img
+                    src={program.image}
+                    alt={program.name}
+                    className="w-full h-56 md:h-72 object-cover"
+                  />
 
-                {/* Status Dipilih */}
-                {selectedProgram === program.code && (
-                  <div className="p-4 bg-blue-50 text-blue-600 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5" />
-                    <span className="text-sm font-medium">Dipilih</span>
-                    <a
-                      href={`https://wa.me/${+6281295012668}?text=${encodeURIComponent(`Halo, saya ingin bertanya tentang ${program.name}. ${program.description}`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                      Hubungi Sekarang
-                    </a>
-                  </div>
-                )}
-              </div>
-            ))}
+                  {/* Status Dipilih */}
+                  {selectedProgram === program.code && (
+                    <div className="p-4 bg-blue-50 text-blue-600 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-sm font-medium">Dipilih</span>
+                      <a
+                        href={`https://wa.me/${+6281295012668}?text=${encodeURIComponent(`Halo, saya ingin bertanya tentang ${program.name}. ${program.description}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        Hubungi Sekarang
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -600,47 +603,55 @@ export default function BimbelPage() {
 
           {/* Grid Program */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-            {tryoutPrograms.map((program) => (
-              <div
-                key={program.code}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
-              >
-                {/* Image only */}
-                <div className="w-full aspect-[4/3] overflow-hidden">
-                  <img
-                    src={program.image}
-                    alt={program.name}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Buttons + Category */}
-                <div className="flex items-center justify-between p-4">
-                  {/* Kiri = Tombol + Category */}
-                  <div className="flex items-center gap-2">
-                    <a
-                      href="https://wa.me/6281295012668"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
-                    >
-                      Hubungi Sekarang
-                    </a>
-                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-2 rounded">
-                      {program.category}
-                    </span>
+            {loadingTryout ? (
+              <p className="text-center text-gray-500 col-span-2">Loading tryout...</p>
+            ) : errorTryout ? (
+              <p className="text-center text-red-500 col-span-2">Gagal memuat data tryout.</p>
+            ) : tryoutPrograms.length === 0 ? (
+              <p className="text-center text-gray-500 col-span-2">Belum ada tryout tersedia.</p>
+            ) : (
+              tryoutPrograms.map((program) => (
+                <div
+                  key={program.code}
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                >
+                  {/* Image only */}
+                  <div className="w-full aspect-[4/3] overflow-hidden">
+                    <img
+                      src={program.image}
+                      alt={program.name}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
 
-                  {/* Kanan = Lihat Detail */}
-                  <a
-                    href="/bimbel"
-                    className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
-                  >
-                    Lihat Detail →
-                  </a>
+                  {/* Buttons + Category */}
+                  <div className="flex items-center justify-between p-4">
+                    {/* Kiri = Tombol + Category */}
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://wa.me/6281295012668"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-green-400 hover:bg-green-500 text-white text-xs font-medium px-3 py-2 rounded-lg transition-colors"
+                      >
+                        Hubungi Sekarang
+                      </a>
+                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-2 rounded">
+                        {program.category}
+                      </span>
+                    </div>
+
+                    {/* Kanan = Lihat Detail */}
+                    <a
+                      href="/bimbel"
+                      className="text-blue-400 hover:text-blue-500 text-xs font-medium px-3 py-2 border border-blue-400 rounded-lg"
+                    >
+                      Lihat Detail →
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           {/* Button */}

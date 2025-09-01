@@ -1,104 +1,162 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
+// import PostAnalytics from '../[id]/ClientAnalytics'; // Uncomment if analytics is available
 
-interface WPPost {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  content: { rendered: string };
-  date: string;
-  _embedded?: {
-    'wp:featuredmedia'?: {
-      source_url: string;
-    }[];
-  };
+// Ambil post dari API Laravel, cek success dan ambil data
+async function getPost(slug: string) {
+  const res = await fetch(`http://localhost:8000/api/public/posts/slug/${slug}`, {
+    cache: 'no-store',
+    headers: { Accept: 'application/json' },
+  });
+  if (!res.ok) throw new Error('Failed to fetch post');
+  const data = await res.json();
+  return data && data.success && data.data ? data.data : null;
 }
 
-async function getPost(slug: string): Promise<WPPost | null> {
-  try {
-    const res = await fetch(
-      `http://localhost/wordpress/wp-json/wp/v2/posts?slug=${slug}&_embed`,
-      { cache: 'no-store' } // biar fresh setiap request
-    );
-
-    if (!res.ok) return null;
-
-    const data: WPPost[] = await res.json();
-    return data.length > 0 ? data[0] : null;
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
+// Format tanggal Indonesia
+function formatDate(dateStr?: string) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+// Metadata dinamis untuk SEO
+// Canonical URL akan mengambil dari post.canonical_url jika ada, jika tidak fallback ke /blog/{slug}
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPost(params.slug);
+  return {
+    title: post?.meta_title || post?.title || 'Detail Blog',
+    description: post?.meta_description || post?.summary || '',
+    keywords: post?.meta_keywords
+      ? post.meta_keywords.split(',').map((t: string) => t.trim())
+      : ['blog', 'artikel'],
+    alternates: {
+      canonical: post?.canonical_url && post.canonical_url !== ''
+        ? post.canonical_url
+        : `http://localhost:3000/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: post?.meta_title || post?.title || '',
+      description: post?.meta_description || post?.summary || '',
+      url: post?.canonical_url && post.canonical_url !== ''
+        ? post.canonical_url
+        : `http://localhost:3000/blog/${params.slug}`,
+      images: post?.image
+        ? [`http://localhost:8000/storage/${post.image}`]
+        : [],
+      type: 'article',
+      publishedTime: post?.published_at || post?.created_at,
+      authors: post?.author ? [post.author] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post?.meta_title || post?.title || '',
+      description: post?.meta_description || post?.summary || '',
+      images: post?.image
+        ? [`http://localhost:8000/storage/${post.image}`]
+        : [],
+    },
+  };
+}
 
-  if (!post) {
-    notFound();
+// Komponen halaman detail post
+export default async function PostDetail({ params }: { params: { slug: string } }) {
+  let post = null;
+  let fetchError = null;
+  try {
+    post = await getPost(params.slug);
+  } catch (err) {
+    fetchError = err instanceof Error ? err.message : String(err);
   }
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('id-ID', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link 
-            href="/blog"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            ← Kembali ke Blog
-          </Link>
+  // Always show debug info in development
+  if (!post) {
+    // eslint-disable-next-line no-console
+    console.log('DEBUG (server):', { slug: params.slug, post, fetchError });
+    return (
+      <div className="max-w-3xl mx-auto py-10 px-4 sm:px-0 text-center text-red-600">
+        <h2 className="text-2xl font-bold mb-4">Data blog tidak ditemukan</h2>
+        <p>Pastikan API mengembalikan data yang benar dan slug post valid.</p>
+        <div className="bg-gray-100 text-left p-4 mt-6 rounded">
+          <strong>Debug info:</strong>
+          <pre>{JSON.stringify({ slug: params.slug, post, fetchError }, null, 2)}</pre>
         </div>
-      </nav>
+      </div>
+    );
+  }
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Featured Image */}
-        {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-          <div className="relative h-64 md:h-96 mb-8 rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={post._embedded['wp:featuredmedia'][0].source_url}
-              alt={post.title.rendered}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+  const author = post.author || 'Admin';
+  const category = post.category || null;
+  const tags =
+    post.meta_keywords && typeof post.meta_keywords === 'string'
+      ? post.meta_keywords.split(',').map((t: string) => t.trim())
+      : [];
+
+  // eslint-disable-next-line no-console
+  console.log('DEBUG (server):', { slug: params.slug, post, fetchError });
+  return (
+    <div className="max-w-3xl mx-auto py-10 px-4 sm:px-0">
+      {/* <PostAnalytics postId={params.slug} /> */}
+      <h1 className="text-4xl font-bold mb-2 text-gray-900 leading-tight">
+        {post.title}
+      </h1>
+
+      <div className="flex flex-wrap items-center text-sm text-gray-500 mb-4 gap-2">
+        <span>{formatDate(post.published_at || post.created_at) || 'Tanggal tidak tersedia'}</span>
+        <span>•</span>
+        <span>By {author}</span>
+        {category && (
+          <>
+            <span>•</span>
+            <span>{category}</span>
+          </>
         )}
+      </div>
 
-        {/* Title & Date */}
-        <header className="mb-8">
-          <div className="text-gray-500 text-sm mb-4">
-            {formatDate(post.date)}
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            {post.title.rendered}
-          </h1>
-          {post.excerpt?.rendered && (
-            <div
-              className="text-xl text-gray-600 leading-relaxed border-l-4 border-blue-500 pl-6"
-              dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-            />
-          )}
-        </header>
-
-        {/* Content */}
-        <div className="bg-white rounded-xl shadow-sm p-8 mb-12">
-          <div
-            className="prose prose-lg max-w-none text-gray-800 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+      {post.image && (
+        <div className="mb-8 rounded-lg overflow-hidden shadow">
+          <Image
+            src={`http://localhost:8000/storage/${post.image}`}
+            alt={post.title}
+            width={800}
+            height={400}
+            className="w-full h-72 object-cover"
+            priority
           />
         </div>
-      </article>
+      )}
+
+      <p className="text-lg text-gray-700 mb-6 italic">{post.summary}</p>
+
+      {/* Debug: Commented out dangerouslySetInnerHTML */}
+      {/*
+      <article
+        className="prose prose-lg max-w-none text-gray-900 mb-8"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+      */}
+      <div className="bg-gray-100 p-4 rounded mb-8">
+        <strong>Debug content:</strong>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <strong>Debug fetchError:</strong>
+        <pre>{JSON.stringify(fetchError, null, 2)}</pre>
+      </div>
+
+      {tags.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-6">
+          {tags.map((tag: string) => (
+            <span
+              key={tag}
+              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

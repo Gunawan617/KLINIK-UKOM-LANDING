@@ -10,6 +10,11 @@ export const bidanQuestions = [
       "Peningkatan Hormon Chorionic Gonadotropin (HCG)"
     ],
     answer: 4,
+    explanation: `Kata Kunci: Tidak haid ±1 bulan, mual pagi hari, PP Test (+).\n
+• Penyebab mual awal kehamilan: meningkatnya hormon Human Chorionic Gonadotropin (HCG) dan estrogen.\n
+• MSH meningkat: perubahan warna kulit.\n
+• Hormon laktogen meningkat: persiapan menyusui.`,
+    image: null,
   },
   {
     id: 2,
@@ -22,6 +27,11 @@ export const bidanQuestions = [
       "Kurus"
     ],
     answer: 1,
+    explanation: `Kata Kunci: TB 160 cm, BB sebelum hamil 53 kg, BB sekarang 62 kg.\n
+• Kenaikan BB selama hamil = 62 - 53 = 9 kg (normal untuk usia kehamilan 20 minggu).\n
+• IMT = BB/TB² = 62 / (1,60)² = 24,2.\n
+• IMT 18,5–24,9 → Normal.\n
+• Kesimpulan: Status gizi ibu Normal.`,
   },
   {
     id: 3,
@@ -34,6 +44,10 @@ export const bidanQuestions = [
       "KIE kondisi ibu"
     ],
     answer: 0,
+    explanation: `Kata Kunci: Pusing, TD 160/110 mmHg, protein urin (+++), >20 minggu.\n
+• Diagnosis: Preeklampsia.\n
+• Kriteria: TD ≥140/90 mmHg + proteinuri ≥1+ setelah 20 minggu.\n
+• Tindakan: Rujuk ke RS, stabilisasi sebelum rujuk.`,
   },
   {
     id: 4,
@@ -46,6 +60,10 @@ export const bidanQuestions = [
       "Makanan seimbang"
     ],
     answer: 1,
+    explanation: `Kata Kunci: Bayi 2 bulan, diare, susu formula.\n
+• Faktor penyebab kegagalan ASI eksklusif: prelakteal, tambahan susu formula, penghentian ASI, ibu bekerja, ibu mencoba susu formula.\n
+• ASI eksklusif mencegah diare pada bayi <6 bulan.\n
+• Edukasi: Berikan ASI eksklusif 6 bulan.`,
   },
   {
     id: 5,
@@ -58,6 +76,11 @@ export const bidanQuestions = [
       "Gonadotropin Releasing Hormone"
     ],
     answer: 2,
+    explanation: `Kata Kunci: Nifas hari 1, ASI belum lancar.\n
+• Prolaktin: hormon utama produksi ASI.\n
+• Setelah plasenta lahir, estrogen & progesteron turun → prolaktin aktif.\n
+• Isapan bayi → hipotalamus → hipofisis anterior → prolaktin → produksi ASI.\n
+• Hambatan: stres, gizi buruk, obat-obatan.`,
   },
   {
     id: 6,
@@ -70,6 +93,11 @@ export const bidanQuestions = [
       "Bayi terlalu cepat dimandikan dan tidak segera diselimuti"
     ],
     answer: 2,
+    explanation: `Kata Kunci: Kehilangan panas KONDUKSI.\n
+• Konduksi: kontak langsung dengan benda dingin (meja, timbangan tanpa alas).\n
+• Konveksi: udara dingin (AC, kipas angin).\n
+• Radiasi: benda sekitar lebih dingin tanpa kontak langsung.\n
+• Evaporasi: penguapan cairan ketuban.`,
   },
   {
     id: 7,
@@ -82,6 +110,9 @@ export const bidanQuestions = [
       "Memberikan uterotonika (oksitosin) yang kedua"
     ],
     answer: 1,
+    explanation: `Kata Kunci: Retensio plasenta, perdarahan ±300cc, plasenta belum lahir >30 menit.\n
+• Retensio plasenta: plasenta tidak lahir 30 menit setelah bayi lahir meski diberi uterotonika.\n
+• Penatalaksanaan: Beri uterotonika tambahan, jika gagal → manual plasenta.`,
   },
   {
     id: 8,
@@ -94,6 +125,9 @@ export const bidanQuestions = [
       "Memberikan uterotonika (oksitosin) yang kedua"
     ],
     answer: 4,
+    explanation: `Kata Kunci: Perdarahan kala III, plasenta belum lepas, oksitosin pertama sudah diberikan.\n
+• Tindakan: Berikan uterotonika kedua.\n
+• Jika gagal setelah 30 menit → manual plasenta.`,
   },
   {
     id: 9,
@@ -106,6 +140,11 @@ export const bidanQuestions = [
       "Pemimpin"
     ],
     answer: 0,
+    explanation: `Kata Kunci: Bidan melakukan rujukan.\n
+• Peran pelaksana: memberi asuhan kebidanan langsung, merujuk bila perlu.\n
+• Peran pengelola: mengatur pelayanan kesehatan.\n
+• Pendidik: memberi penyuluhan.\n
+• Peneliti: melakukan penelitian.`,
   },
   {
     id: 10,
@@ -118,5 +157,11 @@ export const bidanQuestions = [
       "Abortus in complete"
     ],
     answer: 1,
+    explanation: `Kata Kunci: Perdarahan merah segar, tanpa nyeri, usia 29 minggu.\n
+• Plasenta previa: perdarahan merah segar tanpa nyeri trimester II/III.\n
+• Solusio plasenta: perdarahan + nyeri perut hebat.\n
+• Ruptur uteri: nyeri hebat, syok, riwayat SC.\n
+• Abortus: perdarahan trimester I dengan nyeri.\n
+• Diagnosis: Plasenta Previa.`,
   },
 ];

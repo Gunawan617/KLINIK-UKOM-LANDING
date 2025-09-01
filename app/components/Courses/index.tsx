@@ -57,7 +57,7 @@ const CoursesSlider = () => {
               },
               1024: { 
                 slidesPerView: 3,
-                spaceBetween: 24
+                spaceBetween: 16
               }
             }}
             className="courses-slider pb-4"
@@ -65,7 +65,7 @@ const CoursesSlider = () => {
           >
             {postData.map((item, i) => (
               <SwiperSlide key={i} className="!h-auto">
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full max-w-[380px] mx-auto mb-4">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full max-w-[580px] mx-auto mb-4">
                   {/* Media */}
                   <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl">
                     {item.videoUrl ? (
