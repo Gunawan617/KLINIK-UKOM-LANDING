@@ -133,12 +133,12 @@ export default async function PostDetail({ params }: { params: { slug: string } 
       <p className="text-lg text-gray-700 mb-6 italic">{post.summary}</p>
 
       {/* Debug: Commented out dangerouslySetInnerHTML */}
-      {/*
+      {
       <article
         className="prose prose-lg max-w-none text-gray-900 mb-8"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
-      */}
+      }
       {/* <div className="bg-gray-100 p-4 rounded mb-8">
         <strong>Debug content:</strong>
         <pre>{JSON.stringify(post, null, 2)}</pre>
