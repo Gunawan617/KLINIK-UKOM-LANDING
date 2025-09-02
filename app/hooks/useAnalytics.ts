@@ -36,13 +36,13 @@ export const useAnalytics = (url: string) => {
         const data = await response.json();
 
         if (data.success || data.message === "Logged") {
-          console.log('✅ Visit tracked successfully');
+          // console.log('✅ Visit tracked successfully');
           hasTracked.current = true;
         } else {
-          console.error('❌ Failed to track visit:', data.message);
+          // console.error('❌ Failed to track visit:', data.message);
         }
       } catch (error) {
-        console.error('❌ Failed to track visit:', error);
+        // console.error('❌ Failed to track visit:', error);
       }
     };
 

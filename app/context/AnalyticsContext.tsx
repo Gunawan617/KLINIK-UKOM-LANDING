@@ -32,15 +32,15 @@ export const AnalyticsProvider: React.FC<{ children: ReactNode }> = ({ children 
       console.log('RAW ANALYTICS RESPONSE:', raw);
       const data = JSON.parse(raw);
       if (data.success) {
-        console.log('✅ Page view tracked:', url);
+        // console.log('✅ Page view tracked:', url);
       }
     } catch (error) {
-      console.error('❌ Failed to track page view:', error);
+      // console.error('❌ Failed to track page view:', error);
     }
   };
 
   const trackEvent = async (eventName: string, data?: any) => {
-    console.log('📊 Event tracked:', eventName, data);
+    // console.log('📊 Event tracked:', eventName, data);
     // Bisa ditambahkan ke API analytics nanti
   };
 
