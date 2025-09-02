@@ -13,19 +13,24 @@ const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefin
 export const AnalyticsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const trackPageView = async (url: string) => {
     try {
-  const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
+      const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
         },
         body: JSON.stringify({
           url,
           referrer: document.referrer || undefined,
           user_agent: navigator.userAgent,
         }),
+        credentials: 'omit', // Tidak mengirim cookies untuk menghindari CSRF
       });
 
-      const data = await response.json();
+      const raw = await response.text();
+      console.log('RAW ANALYTICS RESPONSE:', raw);
+      const data = JSON.parse(raw);
       if (data.success) {
         console.log('✅ Page view tracked:', url);
       }

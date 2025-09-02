@@ -22,16 +22,19 @@ export const useAnalytics = (url: string) => {
           user_agent: navigator.userAgent,
         };
 
-  const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
           },
           body: JSON.stringify(visitData),
+          credentials: 'omit', // Tidak mengirim cookies untuk menghindari CSRF
         });
 
         const data = await response.json();
-        
+
         if (data.success || data.message === "Logged") {
           console.log('✅ Visit tracked successfully');
           hasTracked.current = true;
