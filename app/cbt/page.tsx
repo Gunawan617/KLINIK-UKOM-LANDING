@@ -152,7 +152,7 @@ export default function CBTPage() {
             <h3 className="text-xl font-bold text-emerald-700 mb-2">🎉 Selamat! Kamu Lulus!</h3>
             <p className="text-emerald-600">Pertahankan prestasimu dan siap menghadapi ujian sebenarnya!</p>
               <a
-              href="https://wa.me/+6281295012668?text=Halo%2C%20saya%20baru%20selesai%20CBT%20dan%20ingin%20persiapan%20UKOM"
+              href="https://wa.me/6281295012668?text=Halo%2C%20saya%20baru%20selesai%20CBT%20dan%20ingin%20persiapan%20UKOM"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg shadow"
@@ -165,7 +165,7 @@ export default function CBTPage() {
             <h3 className="text-xl font-bold text-rose-700 mb-2">Belum Lulus</h3>
             <p className="text-rose-600">Terus berlatih agar lebih siap menghadapi Ukom!</p>
              <a
-            href="https://wa.me/6281234567890?text=Halo%2C%20saya%20baru%20selesai%20CBT%20dan%20ingin%20bimbingan%20lebih%20lanjut"
+            href="https://wa.me/6281295012668?text=Halo%2C%20saya%20baru%20selesai%20CBT%20dan%20ingin%20bimbingan%20lebih%20lanjut"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-rose-600 hover:bg-rose-700 text-white font-semibold px-4 py-2 rounded-lg shadow"
