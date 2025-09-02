@@ -22,7 +22,7 @@ export default function BukuPage() {
         setLoading(true);
         setError(false);
 
-        console.log("🔄 Fetching books from API...");
+        console.log("🔄 Fetching books from server...");
         const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.BOOKS), {
           method: 'GET',
           headers: {
@@ -36,12 +36,12 @@ export default function BukuPage() {
 
         if (!response.ok) {
           const errorText = await response.text();
-          console.error("❌ API Error:", response.status, errorText);
+          console.error("❌ Server Gagal:", response.status, errorText);
           throw new Error(`HTTP ${response.status}: ${errorText}`);
         }
 
         const data = await response.json();
-        console.log("✅ Raw API Response:", data);
+        console.log("✅ Sukses konek ke server:", data);
 
         // Pastikan data array
         if (Array.isArray(data)) {

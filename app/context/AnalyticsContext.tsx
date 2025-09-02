@@ -1,7 +1,7 @@
 "use client";
-"use client";
 // contexts/AnalyticsContext.tsx
 import React, { createContext, useContext, ReactNode } from 'react';
+import { API_CONFIG, getApiUrl } from '../../lib/api-config';
 
 interface AnalyticsContextType {
   trackPageView: (url: string) => Promise<void>;
@@ -13,7 +13,7 @@ const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefin
 export const AnalyticsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const trackPageView = async (url: string) => {
     try {
-      const response = await fetch('http://localhost:8000/api/analytics/track', {
+  const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

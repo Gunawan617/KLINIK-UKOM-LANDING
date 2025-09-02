@@ -1,5 +1,6 @@
 // hooks/useAnalytics.ts
 import { useEffect, useRef } from 'react';
+import { API_CONFIG, getApiUrl } from '../../lib/api-config';
 
 interface VisitData {
   url: string;
@@ -21,7 +22,7 @@ export const useAnalytics = (url: string) => {
           user_agent: navigator.userAgent,
         };
 
-        const response = await fetch('http://localhost:8000/api/analytics/track', {
+  const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.ANALYTICS_TRACK), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

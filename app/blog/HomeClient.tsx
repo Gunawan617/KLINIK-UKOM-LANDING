@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { getStorageUrl } from "../../lib/api-config";
 import Image from "next/image";
 
 function PostList({ posts }: { posts: any[] }) {
@@ -15,10 +16,11 @@ function PostList({ posts }: { posts: any[] }) {
           {post.image && (
             <div className="mb-3 w-full h-56 relative rounded-lg overflow-hidden">
               <Image
-                src={`http://localhost:8000/storage/${post.image}`}
+                src={getStorageUrl(post.image)}
                 alt={post.title}
                 fill
                 className="object-cover"
+                unoptimized
               />
             </div>
           )}
@@ -90,10 +92,11 @@ export default function HomeClient({ posts }: { posts: any[] }) {
                     {post.image && (
                       <div className="w-14 h-14 relative flex-shrink-0 rounded-lg overflow-hidden shadow">
                         <Image
-                          src={`http://localhost:8000/storage/${post.image}`}
+                          src={getStorageUrl(post.image)}
                           alt={post.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform"
+                          unoptimized
                         />
                       </div>
                     )}

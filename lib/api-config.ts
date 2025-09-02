@@ -1,5 +1,12 @@
+
+// Helper khusus untuk gambar di /storage (langsung path image)
+export const getStorageUrl = (imagePath?: string) => {
+  if (!imagePath) return "/assets/placeholder.svg";
+  if (imagePath.startsWith('http')) return imagePath;
+  return `${API_CONFIG.BASE_URL}/storage/${imagePath}`;
+};
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000',
+  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
   ENDPOINTS: {
     BIMBEL_PROGRAMS: '/api/public/bimbel-programs',
     TRYOUT_PROGRAMS: '/api/public/tryout-programs',
@@ -9,7 +16,7 @@ export const API_CONFIG = {
     POST_BY_SLUG: '/api/public/posts/slug',
     CATEGORIES: '/api/public/categories',
     TEAM_MEMBERS: '/api/public/team-members',
-    ANALYTICS_TRACK: '/api/analytics/track',
+  ANALYTICS_TRACK: '/api/analytics/track',
   }
 };
 
@@ -28,6 +35,12 @@ export const getImageUrl = (imagePath?: string) => {
     return `${API_CONFIG.BASE_URL}/storage/${filename}`;
   }
   if (imagePath.startsWith('books/')) {
+    return `${API_CONFIG.BASE_URL}/storage/${imagePath}`;
+  }
+  if (imagePath.startsWith('team_members/')) {
+    return `${API_CONFIG.BASE_URL}/storage/${imagePath}`;
+  }
+  if (imagePath.startsWith('team-members/')) {
     return `${API_CONFIG.BASE_URL}/storage/${imagePath}`;
   }
   if (imagePath.startsWith('storage/')) {

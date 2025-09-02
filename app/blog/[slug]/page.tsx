@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { API_CONFIG, getApiUrl } from '../../../lib/api-config';
+import { API_CONFIG, getApiUrl, getStorageUrl } from '../../../lib/api-config';
 // import PostAnalytics from '../[id]/ClientAnalytics'; // Uncomment if analytics is available
 
 // Ambil post dari API Laravel, cek success dan ambil data
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         ? post.canonical_url
         : `http://localhost:3000/blog/${params.slug}`,
       images: post?.image
-        ? [`http://localhost:8000/storage/${post.image}`]
+        ? [getStorageUrl(post.image)]
         : [],
       type: 'article',
       publishedTime: post?.published_at || post?.created_at,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: post?.meta_title || post?.title || '',
       description: post?.meta_description || post?.summary || '',
       images: post?.image
-        ? [`http://localhost:8000/storage/${post.image}`]
+        ? [getStorageUrl(post.image)]
         : [],
     },
   };
@@ -120,12 +120,13 @@ export default async function PostDetail({ params }: { params: { slug: string } 
       {post.image && (
         <div className="mb-8 rounded-lg overflow-hidden shadow">
           <Image
-            src={`http://localhost:8000/storage/${post.image}`}
+            src={getStorageUrl(post.image)}
             alt={post.title}
             width={800}
             height={400}
             className="w-full h-72 object-cover"
             priority
+            unoptimized
           />
         </div>
       )}
