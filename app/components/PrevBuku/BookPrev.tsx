@@ -90,7 +90,7 @@ const BookPrev: React.FC = () => {
 
   const handleBuy = (book: Book) => {
     const whatsappNumber = "6281295012668";
-    const message = 'Halo, saya ingin membeli buku "${book.title}" seharga ${book.price}. Mohon informasi lebih lanjut.';
+    const message = `Halo, saya ingin membeli buku "${book.title}" seharga ${book.price}. Mohon informasi lebih lanjut.`;
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encoded}`, "_blank");
   };
