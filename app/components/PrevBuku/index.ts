@@ -13,7 +13,7 @@ export const books: Book[] = [
       description:
         "Buku ini berisi soal-soal prediksi UKOM terbaru, pembahasan detail, strategi belajar efektif, dan tips sukses menghadapi ujian profesi ners.",
       price: "Rp 250.000",
-      coverImage: "assets/books/Rahasia sukses ukom 2025 profesi ners.png",
+      cover_image: "assets/books/Rahasia sukses ukom 2025 profesi ners.png",
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export const books: Book[] = [
       description:
         "Buku ini berisi tips, strategi, dan soal-soal prediksi UKOM Bidan terbaru agar lulus dengan nilai maksimal.",
       price: "Rp 300.000",
-      coverImage: "assets/books/Rahasia sukses ukom bidan.png",
+      cover_image: "assets/books/Rahasia sukses ukom bidan.png",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export const books: Book[] = [
       description:
         "Buku ini menyajikan ringkasan materi dari berbagai bidang keperawatan, dilengkapi soal latihan dan tips menjawab soal cepat dan tepat.",
       price: "Rp 275.000",
-      coverImage: "assets/books/Rangkuman Materi Keperawatan Terintegrasi ukom 2025.png",
+      cover_image: "assets/books/Rangkuman Materi Keperawatan Terintegrasi ukom 2025.png",
     },
 
 

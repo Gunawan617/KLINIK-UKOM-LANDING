@@ -32,9 +32,9 @@ export default function BookCard({ book, searchQuery, onDetail, onBuy }: BookCar
     <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
       {/* Cover Image */}
       <div className="relative h-48 bg-gray-100 overflow-hidden">
-        {book.coverImage ? (
+        {book.cover_image ? (
           <img
-            src={book.coverImage}
+            src={book.cover_image}
             alt={book.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             onError={(e) => {

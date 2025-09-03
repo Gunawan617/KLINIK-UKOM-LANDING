@@ -26,9 +26,9 @@ export default function BookDetail({ book, onBack, onBuy }: BookDetailProps) {
             {/* Cover Image */}
             <div className="md:w-1/3">
               <div className="relative h-96 md:h-full bg-gray-100">
-                {book.coverImage ? (
+                {book.cover_image ? (
                   <img
-                    src={book.coverImage}
+                    src={book.cover_image}
                     alt={book.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {

@@ -6,7 +6,7 @@ export interface Book {
   excerpt: string;
   description?: string;
   price: number;
-  coverImage?: string;
+  cover_image?: string;
   created_at?: string;
   updated_at?: string;
 }

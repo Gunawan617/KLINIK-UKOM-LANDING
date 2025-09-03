@@ -306,6 +306,9 @@ const BimbelPrev: React.FC = () => {
             <p className="text-gray-600">
               Ribuan peserta sudah lulus UKOM dengan program kami
             </p>
+            <a href="/alumni" className="text-blue-500 hover:text-blue-700 text-sm font-medium mt-2 inline-block">
+              Lihat Selengkapnya →
+            </a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

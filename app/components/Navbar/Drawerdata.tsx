@@ -17,7 +17,6 @@ const navigation: NavigationItem[] = [
   { name: 'Tryout', href: '#tryoutprev', current: false },
   { name: 'Faq', href: '/faq', current: false },
   // { name: 'Blog', href: '/blog', current: false },
-  { name: 'Faq', href: '/faq', current: false },
   // { name: 'Group', href: '#/', current: false },
   // { name: 'Testimonial', href: '#testimonial', current: false },
 ]
