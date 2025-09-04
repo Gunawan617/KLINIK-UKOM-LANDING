@@ -60,7 +60,6 @@ export default function MentorCarousel() {
   const [shuffledData, setShuffledData] = useState<DataType[]>(postData);
 
   useEffect(() => {
-    // Shuffle hanya di client
     setShuffledData(shuffleArray(postData));
   }, []);
 
@@ -70,12 +69,12 @@ export default function MentorCarousel() {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: false,
-    speed: 4000,
+    autoplay: true,        
+    speed: 1000,           
+    autoplaySpeed: 3000,   
+    cssEase: "ease-in-out",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    autoplaySpeed: 4500,
-    cssEase: "linear",
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 1000, settings: { slidesToShow: 2, slidesToScroll: 1 } },
@@ -93,8 +92,9 @@ export default function MentorCarousel() {
         <Slider {...settings}>
           {shuffledData.map((items, i) => (
             <div key={i} className="px-2">
-              <div className="py-14 md:py-10 text-center h-full flex flex-col">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 mx-auto rounded-full overflow-hidden mb-6">
+              <div className="py-10 text-center h-full flex flex-col">
+                {/* FOTO DIPERKECIL */}
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden mb-6">
                   <Image
                     src={items.imgSrc}
                     alt={`${items.name} profile`}
@@ -104,13 +104,13 @@ export default function MentorCarousel() {
                 </div>
                 <div className="flex-1 flex flex-col justify-end">
                   <div className="max-w-xs mx-auto px-4">
-                    <div className="h-16 sm:h-20 flex items-end justify-center mb-3">
-                      <h3 className="text-xl sm:text-2xl font-semibold text-lightblack leading-tight text-center">
+                    <div className="h-14 sm:h-16 flex items-end justify-center mb-2">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-lightblack leading-tight text-center">
                         {items.name}
                       </h3>
                     </div>
-                    <div className="h-12 sm:h-14 flex items-start justify-center">
-                      <h4 className="text-base sm:text-lg font-normal text-lightblack opacity-50 text-center leading-tight">
+                    <div className="h-10 sm:h-12 flex items-start justify-center">
+                      <h4 className="text-sm sm:text-base md:text-lg font-normal text-lightblack opacity-50 text-center leading-tight">
                         {items.profession}
                       </h4>
                     </div>
